@@ -18,5 +18,11 @@ public class SampleController {
 		model.put("message", this.message);
 		return "sample";
 	}
+	@RequestMapping("/viewapp")
+	public String view(Map<String, Object> model) {
+		model.put("message", this.message);
+		return "sample";
+	}
+	
 
 }

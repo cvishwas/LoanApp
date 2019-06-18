@@ -1,0 +1,12 @@
+@charset "ISO-8859-1";
+tr, td {
+  border: 1px solid black;
+}
+table {
+  border-collapse: collapse;
+  border-spacing: 5px;
+  width: 600px;
+}
+td {
+	text-align: center;
+}

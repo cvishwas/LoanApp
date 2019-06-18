@@ -1,0 +1,53 @@
+create table loan_app_users(
+first_name varchar(255),
+last_name varchar(255),
+user_login varchar(255),
+user_pass varchar(255),
+user_role varchar(255),
+user_id int,
+customer_info int,
+PRIMARY KEY (user_id),
+FOREIGN KEY (customer_info) REFERENCES loan_app_customer_info (customer_id)
+);
+
+create table loan_app_customer_info(
+customer_id int,
+customer_ssn int,
+customer_address varchar(255),
+customer_city varchar(255),
+customer_state varchar(255),
+customer_country varchar(255),
+customer_date_of_birth varchar(255),
+customer_phone_number varchar(255),
+customer_salary int,
+customer_credit_score int,
+customer_relationship_status varchar(255),
+PRIMARY KEY (customer_id)
+);
+
+create table loan_app_loan_types(
+loan_id int,
+loan_type varchar(255), 
+PRIMARY KEY (loan_id)
+);
+
+insert into loan_app_loan_types values(1, 'Mortgage');
+insert into loan_app_loan_types values(2, 'Personal');
+insert into loan_app_loan_types values(3, 'Auto');
+insert into loan_app_loan_types values(4, 'Business');
+
+create table loan_app_loans(
+loan_id int,
+loan_type int,
+customer_id int,
+amount number,
+start_date varchar(255),
+loan_duration int,
+interest_rate number,
+loan_status varchar(255),
+review_status varchar(255),
+down_payment number,
+PRIMARY KEY (loan_id),
+FOREIGN KEY (loan_type) REFERENCES loan_app_loan_types (loan_id),
+FOREIGN KEY (customer_id) REFERENCES loan_app_users (user_id)
+);

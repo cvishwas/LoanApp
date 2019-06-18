@@ -40,3 +40,7 @@ Thumbs.db
 *.iml
 atlassian-ide-plugin.xml
 target
+.settings/org.eclipse.jdt.apt.core.prefs
+.settings/org.springframework.ide.eclipse.prefs
+.settings/org.eclipse.core.resources.prefs
+.settings/org.eclipse.jdt.core.prefs

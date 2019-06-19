@@ -48,16 +48,16 @@
 <div class="bottom-container">
 <div class="row">
   	<div class="col-md-4">
-    <div>Name</div>
-    <div>(Loan Type) Loan</div>
+    <div>Name (Append name from db here)</div>
+    <div>(Loan Type) Loan (append loan name from db here)</div>
     </div>
-    <div class="col-md-8">LOAN PDF GOES HERE</div>
+    <div class="col-md-8">LOAN PDF GOES HERE (append loan link here)</div>
  </div>
 
 
 <div class="row">
   	<div class="col-md-4">
-    Loan Status: 
+    Loan Status: (clicking one should change status to db) 
     </div>
     <div class="col-md-8">
     	<div class="custom-control custom-radio custom-control-inline">

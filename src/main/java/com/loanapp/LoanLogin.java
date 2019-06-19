@@ -50,8 +50,7 @@ public class LoanLogin extends HttpServlet {
 			String password = request.getParameter("password");
 			LoginBean bean = new LoginBean(username,password);
 			Authenticate.validate(bean);
-			System.out.println("test");  
-			
+						
 			//send redirect
 		}
 	   catch(Exception e){       

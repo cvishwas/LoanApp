@@ -26,8 +26,11 @@ import org.slf4j.LoggerFactory;
  */
 public final class LoanQuestion {
 
+	// Default path.
 	private static String defaultRelativePath = "src//main//resources//loan_questions.txt";
+	// Logger for reporting information about reading the file.
 	private static final Logger LOGGER = LoggerFactory.getLogger(LoanQuestion.class);
+	// Internal HashMmap for storing the questions.
 	private HashMap<String, String> questions;
 
 	// The question character.

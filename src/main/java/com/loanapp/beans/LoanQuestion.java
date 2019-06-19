@@ -30,7 +30,9 @@ public final class LoanQuestion {
 	private static final Logger LOGGER = LoggerFactory.getLogger(LoanQuestion.class);
 	private HashMap<String, String> questions;
 
+	// The question character.
 	private char questionChar;
+	// The flag for enabling/disabling the LOGGER.
 	private boolean enableLogger;
 
 	/**

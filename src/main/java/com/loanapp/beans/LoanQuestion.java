@@ -141,6 +141,7 @@ public final class LoanQuestion {
 
 			String line = br.readLine();
 
+			// Loop through file.
 			while (line != null) {
 				this.questions.put(String.valueOf(this.questionChar) + String.valueOf(index), line);
 				index++;

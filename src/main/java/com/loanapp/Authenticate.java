@@ -15,14 +15,15 @@ public class Authenticate {
 		public static boolean validate(LoginBean bean){  
 		boolean status=false; 
 		try{  
-		Class.forName("org.postgresql.Driver");  //replace with oracle stuff
+		Class.forName("org.postgresql.Driver"); 
+											//replace with oracle stuff
 		//System.out.println("Driver Loaded");
-		Connection con = DriverManager.getConnection("jdbc:postgresql://localhost/USERS?user=postgres&password=2377"); //replace with oracle stuff
+		Connection con = DriverManager.getConnection("jdbc:postgresql://localhost/USERS?user=postgres&password=2377");
+											//replace with oracle stuff
 		//System.out.println("DBConnected");
-		System.out.println(status);
 		PreparedStatement ps=con.prepareStatement(  
 		    "select COUNT(*) from \"USERLIST\" where username=? and password=?");   
-										//replace with loan table name
+											//replace with loan table name
 		ps.setString(1,bean.getUsername());  
 		ps.setString(2,bean.getPassword()); 
 		ResultSet rs=ps.executeQuery(); 

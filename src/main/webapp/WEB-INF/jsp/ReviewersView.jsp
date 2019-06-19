@@ -29,7 +29,7 @@
     </button>
   </nav>
 </div>
-<div class="jumbotron jumbotron-fluid">
+<div class="jumbotron jumbotron-fluid" style="text-align: center;">
 <h1>Loan Status Review</h1>
 <div class="dropdown">
   <button class="btn btn-secondary btn-lg dropdown-toggle" type="button" id="dropdownMenu2" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
@@ -45,7 +45,7 @@
 </div>
 </div>
 </div>
-<div class="bottom-container">
+<div class="bottom-container" style="text-align: center;">
 <div class="row">
   	<div class="col-md-4">
     <div>Name (Append name from db here)</div>

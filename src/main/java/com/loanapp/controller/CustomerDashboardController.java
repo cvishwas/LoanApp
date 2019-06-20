@@ -5,16 +5,27 @@ import java.util.Arrays;
 
 import javax.servlet.http.HttpServletRequest;
 
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 
+import com.loanapp.beans.CustomerDashProperties;
 import com.loanapp.temp.sampleLoan;
 
 @Controller
 public class CustomerDashboardController {
 	
+	@Autowired
+	CustomerDashProperties props;
+	
+	@Autowired
+	JdbcTemplate jdbcTemplate;
+	
+	
 	@RequestMapping("/customerDashboard")
 	public String customerDashboard(HttpServletRequest request) {
+		System.out.println(props);
 		// User user = request.getSession().getAttribute("user");
 		// Database logic here to build an arrayList of loans
 		

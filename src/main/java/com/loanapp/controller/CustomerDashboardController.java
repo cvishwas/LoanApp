@@ -15,14 +15,14 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 
-import com.loanapp.beans.CustomerDashProperties;
+import com.loanapp.beans.DBProperties;
 import com.loanapp.beans.Loan;
 
 @Controller
 public class CustomerDashboardController {
 	
 	@Autowired
-	CustomerDashProperties props;
+	DBProperties props;
 	
 	@Autowired
 	JdbcTemplate jdbcTemplate;

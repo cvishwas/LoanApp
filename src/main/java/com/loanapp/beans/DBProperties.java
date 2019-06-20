@@ -9,8 +9,8 @@ import org.springframework.jdbc.datasource.DriverManagerDataSource;
 import org.springframework.stereotype.Component;
 
 @Component
-@ConfigurationProperties("customerdashdb")
-public class CustomerDashProperties {
+@ConfigurationProperties("db")
+public class DBProperties {
 	String driverclassname;
 	String username;
 	String password;
@@ -42,7 +42,7 @@ public class CustomerDashProperties {
 	}
 	@Override
 	public String toString() {
-		return "CustomerDashProperties [username=" + username + ", password=" + password + ", url=" + url + "]";
+		return "DBProperties =  [username=" + username + ", password=" + password + ", url=" + url + "]";
 	}
 	
 	@Bean

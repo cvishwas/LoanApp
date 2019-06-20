@@ -1,17 +1,22 @@
 package com.loanapp.controller;
 
+import java.sql.ResultSet;
+import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.jdbc.core.JdbcTemplate;
+import org.springframework.jdbc.core.RowMapper;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import com.loanapp.beans.CustomerDashProperties;
-import com.loanapp.temp.sampleLoan;
+import com.loanapp.beans.Loan;
 
 @Controller
 public class CustomerDashboardController {
@@ -24,21 +29,47 @@ public class CustomerDashboardController {
 	
 	
 	@RequestMapping("/customerDashboard")
-	public String customerDashboard(HttpServletRequest request) {
-		System.out.println(props);
-		// User user = request.getSession().getAttribute("user");
-		// Database logic here to build an arrayList of loans
+	public String customerDashboard(Model model, HttpServletRequest request) {
 		
-		// for now use static data
-		ArrayList<sampleLoan> loanList = new ArrayList<sampleLoan>(Arrays.asList(
-				new sampleLoan("4/16/19", "Pending","Personal", "7/1/19/ - 1/1/20","$20,000"),
-				new sampleLoan("7/30/20", "Pending","Auto", "12/1/20/ - 12/1/21","$70,000"),
-				new sampleLoan("3/2/21", "Pending","Mortgage", "6/15/21/ - 12/31/51","$150,000"),
-				new sampleLoan("6/12/22", "Active","Business", "9/12/22/ - 6/30/23","$1,000,000")
-			));
+		// Need to obtain Customer or User ID from session or request, just using 1 for now
+			
+		// get the customers loans
+		List<Loan> loans =  jdbcTemplate.query("select * from LOAN_APP_LOANS where CUSTOMER_ID = 1", new RowMapper<Loan>() {
+			public Loan mapRow(ResultSet rs, int rowNum) throws SQLException{
+				Loan loan = new Loan();
+				loan.setLoanID(rs.getInt("LOAN_ID"));
+				loan.setLoanType(rs.getInt("LOAN_TYPE"));
+				loan.setCustomerID(rs.getInt("CUSTOMER_ID"));
+				loan.setAmount(rs.getDouble("AMOUNT"));
+				loan.setStartDate(rs.getString("START_DATE"));
+				loan.setLoanDuration(rs.getInt("LOAN_DURATION"));
+				loan.setInterestRate(rs.getDouble("INTEREST_RATE"));
+				loan.setLoanStatus(rs.getString("LOAN_STATUS"));
+				loan.setReviewStatus(rs.getString("REVIEW_STATUS"));
+				loan.setDownPayment(rs.getDouble("DOWN_PAYMENT"));
+				return loan;
+				
+			}
+		});
 		
-		request.setAttribute("customerName", "Ryan Roskowski");
-		request.setAttribute("loanList", loanList);
+		// get loan types, will use to parse the loan type (int) attribute in the JSP
+		List<String> types = jdbcTemplate.query("select LOAN_TYPE from LOAN_APP_LOAN_TYPES order by LOAN_ID", new RowMapper<String>() {
+			public String mapRow(ResultSet rs, int rowNum) throws SQLException{
+				return rs.getString(1);
+			}
+		});
+		
+		// get the customers first name
+		String customerFirstName = (String) jdbcTemplate.queryForObject(
+		        "select FIRST_NAME from LOAN_APP_USERS where CUSTOMER_INFO = ?", new Object[] { 1 }, String.class);
+		
+		// get the customers last name
+		String customerLastName = (String) jdbcTemplate.queryForObject(
+				        "select LAST_NAME from LOAN_APP_USERS where CUSTOMER_INFO = ?", new Object[] { 1 }, String.class);
+		
+		model.addAttribute("customerName", customerFirstName + " " + customerLastName);
+		model.addAttribute("loans", loans);
+		model.addAttribute("types", types);
 		return "customerDashboard";
 	}
 }

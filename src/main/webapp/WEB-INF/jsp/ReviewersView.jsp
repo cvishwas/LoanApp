@@ -33,8 +33,8 @@
 					<div class="bg-dark p-4">
 						<h5 class="text-white h4">Welcome to LoanApp</h5>
 						<a href="" class="text-white">Home</a> <a href=""
-							class="text-white">About</a> <a href="" class="text-white">Sign
-							In</a>
+							class="text-white">About</a> <a href="./LoanLogin.jsp"
+							class="text-white">Sign-In</a>
 					</div>
 				</div>
 				<nav class="navbar navbar-dark bg-dark">
@@ -74,6 +74,7 @@
 				<div class="col-md-4">Review</div>
 			</div>
 
+
 			<!-- Going to use this row div to create the table going forward -->
 			<div class="row from-group">
 				<div class="col-md-4">Loan Status: (clicking one should change
@@ -84,13 +85,12 @@
 					<!-- Button trigger modal -->
 					<button type="button" class="btn btn-primary" data-toggle="modal"
 						data-target="#myModal">Review</button>
+
 				</div>
 			</div>
 		</div>
 		<hr />
 	</div>
-
-
 
 	<div class="wrapper">
 		<!-- Modal -->
@@ -103,12 +103,14 @@
 							&times;</button>
 					</div>
 					<div class="modal-body">
+
 						Loan Type: <br> (Input Loan Type here) <br> Customer
 						Name: <br> (Input customer Name here) <br> Loan Amount:
 						<br> (Input loan amount here) <br> Start Date: <br>
 						(Input start date) <br> Loan Duration: <br> (Input loan
 						duration) <br> Interest Rate: <br> (Input interest rate)
 						<br> Down Payment: <br> (Input down payment))
+
 					</div>
 					<div class="modal-footer">
 						<button type="submit" class="btn btn-success">Review

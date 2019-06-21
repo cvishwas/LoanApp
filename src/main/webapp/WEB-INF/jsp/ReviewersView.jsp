@@ -124,6 +124,22 @@
 						Loan Amount:
 						<br>
 						(Input loan amount here)
+						<br>
+						Start Date:
+						<br>
+						(Input start date)
+						<br>
+						Loan Duration:
+						<br>
+						(Input loan duration)
+						<br>
+						Interest Rate:
+						<br>
+						(Input interest rate)
+						<br>
+						Down Payment:
+						<br>
+						(Input down payment))
 					</div>
 					<div class="modal-footer">
 					<button type="submit" class="btn btn-success">Review Completed</button>

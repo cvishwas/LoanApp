@@ -11,34 +11,41 @@ import org.springframework.stereotype.Component;
 @Component
 @ConfigurationProperties("db")
 public class DBProperties {
-	String driverclassname;
-	String username;
-	String password;
-	String url;
-	public String getUsername() {
+	static String driverclassname;
+	static String username;
+	static String password;
+	static String url;
+	static String table;
+	
+	public static String getUsername() {
 		return username;
 	}
 	public void setUsername(String username) {
 		this.username = username;
 	}
-	public String getPassword() {
+	public static String getPassword() {
 		return password;
 	}
 	public void setPassword(String password) {
 		this.password = password;
 	}
-	public String getUrl() {
+	public static String getUrl() {
 		return url;
 	}
 	public void setUrl(String url) {
 		this.url = url;
 	}
-	
-	public String getDriverclassname() {
+	public static String getDriverclassname() {
 		return driverclassname;
 	}
 	public void setDriverclassname(String driverclassname) {
 		this.driverclassname = driverclassname;
+	}
+	public static String getTableName() {
+		return table;
+	}
+	public void setTableName(String table) {
+		this.table = table;
 	}
 	@Override
 	public String toString() {

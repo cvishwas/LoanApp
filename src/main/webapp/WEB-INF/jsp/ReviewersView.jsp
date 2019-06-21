@@ -33,8 +33,8 @@
 					<div class="bg-dark p-4">
 						<h5 class="text-white h4">Welcome to LoanApp</h5>
 						<a href="" class="text-white">Home</a> <a href=""
-							class="text-white">About</a> <a href="./LoanLogin.jsp" class="text-white">Sign
-							In</a>
+							class="text-white">About</a> <a href="./LoanLogin.jsp"
+							class="text-white">Sign-In</a>
 					</div>
 				</div>
 				<nav class="navbar navbar-dark bg-dark">
@@ -72,33 +72,19 @@
 				<div class="col-md-8">LOAN PDF GOES HERE (append loan link
 					here)</div>
 			</div>
-
-
 			<div class="row">
 				<div class="col-md-4">Loan Status: (clicking one should change
 					status to db)</div>
 				<div class="col-md-8">
-					<div class="custom-control custom-radio custom-control-inline">
-						<input type="radio" id="customRadioInline1"
-							name="customRadioInline1" class="custom-control-input"> <label
-							class="custom-control-label" for="customRadioInline1">Complete</label>
-					</div>
-					<div class="custom-control custom-radio custom-control-inline">
-						<input type="radio" id="customRadioInline2"
-							name="customRadioInline1" class="custom-control-input"> <label
-							class="custom-control-label" for="customRadioInline2">Needs
-							more information</label>
-					</div>
+						<!-- Button trigger modal -->
+	<button type="button" class="btn btn-primary" data-toggle="modal"
+		data-target="#myModal">Review</button>
+
 				</div>
 			</div>
 		</div>
 		<hr />
 	</div>
-	
-	<!-- Button trigger modal -->
-	<button type="button" class="btn btn-primary" data-toggle="modal" data-target="#myModal">
-		Review
-	</button>
 	
 	<div class="wrapper">
 	<!-- Modal -->
@@ -106,14 +92,12 @@
 			<div class="modal-dialog" role="document">
 				<div class="modal-content">
 					<div class="modal-header">
-						<h5 class ="modal-title">
-							Loan ID
-						</h5>
+						<h5 class="modal-title">Loan ID</h5>
 						<button type="button" class="close" data-dismiss="modal">
-							&times;
-						</button>
+							&times;</button>
 					</div>
 					<div class="modal-body">
+            
 						Loan Type:
 						<br>
 						(Input Loan Type here)
@@ -143,12 +127,14 @@
 						(Input down payment))
 					</div>
 					<div class="modal-footer">
-					<button type="submit" class="btn btn-success">Review Completed</button>
-					<button type="submit" class="btn btn-light">Need more information</button>
+						<button type="submit" class="btn btn-success">Review
+							Completed</button>
+						<button type="submit" class="btn btn-light">Need more
+							information</button>
 					</div>
 				</div>
 			</div>
-	</div>
+		</div>
 	</div>
 </body>
 </html>

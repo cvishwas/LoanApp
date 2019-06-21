@@ -40,3 +40,7 @@ Thumbs.db
 *.iml
 atlassian-ide-plugin.xml
 target
+<<<<<<< Updated upstream
+=======
+pom.xml
+>>>>>>> Stashed changes

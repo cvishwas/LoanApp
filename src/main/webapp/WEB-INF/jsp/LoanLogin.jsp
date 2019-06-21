@@ -12,7 +12,6 @@
 
 	<header></header>
 	<img alt="herein" src="https://theloanrepublic.com/wp-content/uploads/2018/12/Myloans-uk-review.jpg" width="200" height="200">
-	<!-- http://localhost:8080/WebProj/HelloWorld.jsp Banking.bankSim()%>-->
 
 	<header>Login: </header>
 	

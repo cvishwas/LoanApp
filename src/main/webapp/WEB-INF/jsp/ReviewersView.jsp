@@ -33,7 +33,7 @@
 					<div class="bg-dark p-4">
 						<h5 class="text-white h4">Welcome to LoanApp</h5>
 						<a href="" class="text-white">Home</a> <a href=""
-							class="text-white">About</a> <a href="" class="text-white">Sign
+							class="text-white">About</a> <a href="./LoanLogin.jsp" class="text-white">Sign
 							In</a>
 					</div>
 				</div>

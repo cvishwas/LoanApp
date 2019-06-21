@@ -8,29 +8,19 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.jdbc.core.JdbcTemplate;
 import com.loanapp.dao.MySqlProperties;
 
-public class EmailService extends HttpServlet {
+public class EmailService {
 	/**
 	 * 
 	 */
 	private static final long serialVersionUID = -6243784017654272480L;
 	@Autowired
-	MySqlProperties database;
-	@Autowired
 	JdbcTemplate jdbcTemplate;
-	String loanID;
+	int loanID;
 	String body;
 
-	EmailService(String loanID, String approvalStatus) {
+	EmailService(int loanID, String approvalStatus) {
 		this.loanID = loanID;
 		this.body = approvalStatus;
-	}
-	protected void doGet(HttpServletRequest req, HttpServletResponse resp){
-	    try {
-			resp.sendRedirect(req.getContextPath() + "/redirected");
-		} catch (IOException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
 	}
 	public int updateEmail()
 	{
@@ -38,11 +28,11 @@ public class EmailService extends HttpServlet {
 		return jdbcTemplate.update(query);
 	}
 
-	public String getLoanID() {
+	public int getLoanID() {
 		return loanID;
 	}
 
-	public void setLoanID(String loanID) {
+	public void setLoanID(int loanID) {
 		this.loanID = loanID;
 	}
 

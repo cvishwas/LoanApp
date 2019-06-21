@@ -1,29 +1,30 @@
 package com.loanapp.controller;
 
-import java.math.BigInteger;
+import java.sql.ResultSet;
+import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
 
+import org.springframework.jdbc.core.RowMapper;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.jdbc.core.JdbcTemplate;
 
+import com.loanapp.beans.Loan;
 import com.loanapp.beans.LoanDataReviewer;
 
 @Controller
 public class ReviewerDashboardController {
 	
 	@RequestMapping("/reviewerDashboard")
-	public String reviewerDashboard(HttpServletRequest req) {
+	public String reviewerDashboard(Model model, HttpServletRequest req) {
 		
-		ArrayList<LoanDataReviewer> review = new ArrayList<>(Arrays.asList(
-								new LoanDataReviewer(1, "Mortgage", "Fidel Mohabir" , 150000 , "Not Reviewed"),
-								new LoanDataReviewer(2, "Mortgage", "Fidel Mohabir" , 100003 , "Not Reviewed"),
-								new LoanDataReviewer(3, "Personal", "Random Name" , 100000 , "Reviewed"),
-								new LoanDataReviewer(4, "Auto", " " , 10000 , "Not Reviewed")));
+	
 		
-		req.setAttribute("loanlist", review);
 		return "ReviewersView";
 		
 	}

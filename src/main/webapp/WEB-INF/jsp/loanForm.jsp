@@ -70,11 +70,17 @@
 							<div class="form-group col-md-4">
 								<label class="control-label" for="">Credit Score</label> <input
 									type="text" class="form-control" id=""
-									placeholder="Credit Score" required>
+									placeholder="Credit Score" placeholder="Amount" required>
 							</div>
 							<div class="form-group col-md-4">
-								<label class="control-label" for="">Marital status</label> <input
-									type="text" class="form-control" id="" placeholder="" required>
+								<label class="control-label" for="">Marital status</label> <select
+									id="inputState" class="form-control">
+									<option selected>Choose...</option>
+									<option>Single</option>
+									<option>Married</option>
+									<option>Divorced</option>
+									<option>Widowed</option>
+								</select>
 							</div>
 						</div>
 					</div>
@@ -100,11 +106,11 @@
 				<div class="form-row">
 					<div class="form-group col-md-4">
 						<label class="control-label" for="">Loan amount</label> <input
-							type="text" class="form-control">
+							type="text" class="form-control" placeholder="Amount">
 					</div>
 					<div class="form-group col-md-4">
 						<label class="control-label" for="">Down payment</label> <input
-							type="text" class="form-control">
+							type="text" class="form-control" placeholder="Amount">
 					</div>
 					<div class="form-group col-md-4">
 						<label class="control-label" for="">Co-signer</label> <input
@@ -120,7 +126,6 @@
 		</form>
 		<script type="text/javascript"
 			src="webjars/bootstrap/3.3.7/js/bootstrap.min.js"></script>
-		<script src="webjars/jquery/1.9.1/jquery.min.js"></script>
 	</div>
 </body>
 </html>

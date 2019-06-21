@@ -1,20 +1,25 @@
 package com.loanapp.beans;
 
+/**
+ * LoanDat bean Class for holding loan data.
+ *  
+ * @author Gursimran Singh
+ *
+ */
 public class LoanData 
 {
 	private int loanId;
 	private String loanType;
 	private String loanStatus;
 	private String reviewStatus;
-	private String assignedTo;
+	private User assignedTo;
 	
-	public LoanData(int loadId, String loanType, String loanStatus, String reviewStatus, String assignedTo) 
+	public LoanData(int loadId, String loanType, String loanStatus, String reviewStatus) 
 	{
 		this.loanId = loadId;
 		this.loanType = loanType;
 		this.loanStatus = loanStatus;
 		this.reviewStatus = reviewStatus;
-		this.assignedTo = assignedTo;
 	}
 	
 	public int getLoanId() {
@@ -49,11 +54,17 @@ public class LoanData
 		this.reviewStatus = reviewStatus;
 	}
 	
-	public String getAssignedTo() {
+	public User getAssignedTo() {
 		return assignedTo;
 	}
 	
-	public void setAssignedTo(String assignedTo) {
+	public void setAssignedTo(User assignedTo) {
 		this.assignedTo = assignedTo;
+	}
+
+	@Override
+	public String toString() {
+		return "LoanData [loanId=" + loanId + ", loanType=" + loanType + ", loanStatus=" + loanStatus
+				+ ", reviewStatus=" + reviewStatus + "]";
 	}
 }

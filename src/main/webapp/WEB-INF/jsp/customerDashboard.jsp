@@ -15,31 +15,53 @@
 	 -->
 	<c:url value="/css/customerDashboard.css" var="cdashcss" />
 	<link href="${cdashcss}" rel="stylesheet" />
+	
+	 <style type="text/css">
+   		tr, td {
+ 			 border: 1px solid black;
+		}
+		table {
+		  border-collapse: collapse;
+		  border-spacing: 5px;
+		  width: 50%;
+		}
+		td {
+			text-align: center;
+			padding: 4px;
+		}
+		th {
+			text-align: center;
+			padding: 3px;
+		}
+    </style>
 </head>
 <body>
-<h2>Welcome, <%= request.getAttribute("customerName") %></h2>
+<h2>Welcome, ${customerName}</h2>
 
 <table>
+<tr><td colspan="8";><b>Loans for ${customerName}</b></td></tr>
 <tr>
 	<td><b>Type</b></td>
 	<td><b>Amount</b></td>
-	<td><b>Date</b></td>
-	<td><b>Period</b></td>
+	<td><b>Start Date</b></td>
+	<td><b>Duration (Months)</b></td>
+	<td><b>Interest Rate</b></td>
+	<td><b>Down Payment</b></td>
 	<td><b>Status</b></td>
 	<td><b>Action</b></td>
 </tr>
-<% 
-	ArrayList<sampleLoan> loanList = (ArrayList<sampleLoan>)request.getAttribute("loanList");
-for(int i = 0; i < loanList.size(); i+=1) { %>
-        <tr>      
-            <td><%=loanList.get(i).getLoanType()%></td>
-            <td><%=loanList.get(i).getLoanAmount()%></td>
-            <td><%=loanList.get(i).getLoanDate()%></td>
-            <td><%=loanList.get(i).getLoanPeriod()%></td>
-            <td><%=loanList.get(i).getLoanStatus()%></td>
-            <td><a href="#">View</a>&nbsp;|&nbsp;<a href="#">Edit</a></td>
-        </tr>
-    <% } %>
+<c:forEach items="${loans}" var="loan" varStatus="loopStatus">
+	<tr>
+		<td>${types[loan.loanType-1]}</td>
+		<td>${loan.amount}</td>
+		<td>${loan.startDate}</td>
+		<td>${loan.loanDuration}</td>
+		<td>${loan.interestRate}%</td>
+		<td>${loan.downPayment}</td>
+		<td>${loan.loanStatus}</td>
+		<td><a href="#">View</a>&nbsp;|&nbsp;<a href="#">Edit</a></td>
+	</tr>
+</c:forEach>
 </table>
 </body>
 </html>

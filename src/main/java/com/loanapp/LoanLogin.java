@@ -18,7 +18,7 @@ import javax.servlet.http.HttpServletResponse;
 /**
  * Servlet implementation class BankLogin
  */
-@WebServlet("/BankLogin")
+@WebServlet("/LoanLogin")
 public class LoanLogin extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
@@ -49,9 +49,13 @@ public class LoanLogin extends HttpServlet {
 			String username = request.getParameter("username");   
 			String password = request.getParameter("password");
 			LoginBean bean = new LoginBean(username,password);
-			Authenticate.validate(bean);
-						
-			//send redirect
+			boolean status = Authenticate.validate(bean);
+			// System.out.println(status);
+			if (!status){
+			       System.out.println("Invaild Username or Password"); 
+			}
+			//response.sendRedirect("https://www.google.com");		
+					//send redirect
 		}
 	   catch(Exception e){       
 	       System.out.println("Something went wrong");       

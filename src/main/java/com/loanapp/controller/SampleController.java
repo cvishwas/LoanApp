@@ -12,8 +12,21 @@ public class SampleController {
 	// inject via application.properties
 	@Value("${welcome.message:test}")
 	private String message = "Hello World";
+<<<<<<< Updated upstream
+
+=======
+<<<<<<< Updated upstream
 	//removed comment
+=======
+<<<<<<< Updated upstream
+
+>>>>>>> Stashed changes
+>>>>>>> Stashed changes
 	@RequestMapping("/")
+=======
+	//removed comment
+	@RequestMapping("/sample")
+>>>>>>> Stashed changes
 	public String sample(Map<String, Object> model) {
 		model.put("message", this.message);
 		return "sample";

@@ -72,8 +72,6 @@
 				<div class="col-md-8">LOAN PDF GOES HERE (append loan link
 					here)</div>
 			</div>
-
-
 			<div class="row">
 				<div class="col-md-4">Loan Status: (clicking one should change
 					status to db)</div>
@@ -87,11 +85,10 @@
 		</div>
 		<hr />
 	</div>
-
-
+	
 	<div class="wrapper">
-		<!-- Modal -->
-		<div class="modal fade" id="myModal" role="dialog">
+	<!-- Modal -->
+	<div class="modal fade" id="myModal" role="dialog">
 			<div class="modal-dialog" role="document">
 				<div class="modal-content">
 					<div class="modal-header">
@@ -100,12 +97,34 @@
 							&times;</button>
 					</div>
 					<div class="modal-body">
-						Loan Type: <br> (Input Loan Type here) <br> Customer
-						Name: <br> (Input customer Name here) <br> Loan Amount:
-						<br> (Input loan amount here) <br> Start Date: <br>
-						(Input start date) <br> Loan Duration: <br> (Input loan
-						duration) <br> Interest Rate: <br> (Input interest rate)
-						<br> Down Payment: <br> (Input down payment))
+            
+						Loan Type:
+						<br>
+						(Input Loan Type here)
+						<br>
+						Customer Name:
+						<br>
+						(Input customer Name here)
+						<br>
+						Loan Amount:
+						<br>
+						(Input loan amount here)
+						<br>
+						Start Date:
+						<br>
+						(Input start date)
+						<br>
+						Loan Duration:
+						<br>
+						(Input loan duration)
+						<br>
+						Interest Rate:
+						<br>
+						(Input interest rate)
+						<br>
+						Down Payment:
+						<br>
+						(Input down payment))
 					</div>
 					<div class="modal-footer">
 						<button type="submit" class="btn btn-success">Review

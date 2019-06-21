@@ -22,6 +22,7 @@ public class Authenticate {
 	private static final String DB_URL = DBProperties.getUrl();
 	private final static String DB_USER = DBProperties.getUsername();
 	private static final String DB_PASS = DBProperties.getPassword();
+	private static final String DB_TABLE = DBProperties.getTableName();
 
 		public static boolean validate(LoginBean bean){  
 				boolean status=false; 
@@ -30,7 +31,7 @@ public class Authenticate {
 				Class.forName(DB_DRIVER); 				
 				Connection con = DriverManager.getConnection(DB_URL,DB_USER,DB_PASS);								
 				PreparedStatement ps=con.prepareStatement(  
-				    "select * from " + DBProperties.getTableName() + " where username=? and password=?"); 
+				    "select * from " + DB_TABLE + " where username=? and password=?"); 			
 				ps.setString(1,bean.getUsername());  
 				ps.setString(2,bean.getPassword()); 
 				ResultSet rs=ps.executeQuery(); 

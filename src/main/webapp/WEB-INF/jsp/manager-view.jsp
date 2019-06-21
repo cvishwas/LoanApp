@@ -29,8 +29,9 @@
 					Assign/Reassign
 				</div>
 			</div>
+			
 			<hr>
-
+			
 			<c:if test="${not empty loanData}">
 
 				<c:forEach var="item" items="${loanData}">
@@ -45,10 +46,29 @@
 							${item.reviewStatus}
 						</div>
 						<div class="col-md-2 bg-light border">
-							${item.assignedTo}
+							<c:choose> 
+								<c:when test="${not empty edit && edit == item.loanId}">
+									<select class="form-control form-control-sm" id="exampleFormControlSelect1">
+								      <option>Underwriter 1</option>
+								      <option>Reviewer 1</option>
+								      <option>Reviewer 3</option>
+								      <option>Underwriter 2</option>
+								    </select>
+								</c:when>
+								<c:otherwise>
+									${item.assignedTo}
+								</c:otherwise>
+							</c:choose>
 						</div>
 						<div class="col-md-2">
-							<button class="btn btn-outline-success btn-block">Edit</button>
+							<c:choose> 
+								<c:when test="${not empty edit && edit == item.loanId}">
+									<a href="/managerDash" class="btn btn-success btn-block">Save</a>
+								</c:when>
+								<c:otherwise>
+									<a href="/managerDash?editId=${item.loanId}" class="btn btn-outline-success btn-block">Edit</a>
+								</c:otherwise>
+							</c:choose>
 						</div>
 					</div>
 				</c:forEach>

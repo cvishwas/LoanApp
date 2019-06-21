@@ -1,6 +1,7 @@
 package com.loanapp.temp;
 
 public class sampleLoan{
+	private int loanID;
 	private String loanDate;
 	private String loanStatus;
 	private String loanType;
@@ -13,6 +14,16 @@ public class sampleLoan{
 		this.loanType = loanType;
 		this.loanPeriod = loanPeriod;
 		this.loanAmount = loanAmount;
+	}
+	
+	public sampleLoan(int loanID, String loanStatus) {
+		super();
+		this.loanID = loanID;
+		this.loanStatus = loanStatus;
+	}
+	
+	public int getLoanID() {
+		return loanID;
 	}
 	public String getLoanDate() {
 		return loanDate;
@@ -44,5 +55,4 @@ public class sampleLoan{
 	public void setLoanAmount(String loanAmount) {
 		this.loanAmount = loanAmount;
 	}
-
 }

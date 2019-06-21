@@ -12,8 +12,7 @@ public class SampleController {
 	// inject via application.properties
 	@Value("${welcome.message:test}")
 	private String message = "Hello World";
-	//removed comment
-	@RequestMapping("/")
+	@RequestMapping("/sample")
 	public String sample(Map<String, Object> model) {
 		model.put("message", this.message);
 		return "sample";

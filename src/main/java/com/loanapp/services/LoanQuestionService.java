@@ -5,13 +5,16 @@
 */
 package com.loanapp.services;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+
+import com.loanapp.beans.LoanQuestion;
 
 /**
  * The <strong>LoanQuestionService</strong> type.
  * 
  * <p>
- * The service class
+ * The service class for <b><i>LoanQuestion</i></b>.
  * </p>
  * 
  * @author 		ireap
@@ -19,5 +22,9 @@ import org.springframework.stereotype.Service;
  */
 @Service
 public class LoanQuestionService {
-
+	
+	//@Autowired 
+	//private LoanQuestion loanQuestion;
+	
+	
 }

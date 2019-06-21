@@ -100,6 +100,7 @@
 		Review
 	</button>
 	
+	<div class="wrapper">
 	<!-- Modal -->
 	<div class="modal fade" id="myModal" role="dialog">
 			<div class="modal-dialog" role="document">
@@ -148,6 +149,6 @@
 				</div>
 			</div>
 	</div>
-	
+	</div>
 </body>
 </html>

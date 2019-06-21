@@ -63,5 +63,7 @@
 	</tr>
 </c:forEach>
 </table>
+<br>
+<a href="#">Main Menu</a>
 </body>
 </html>

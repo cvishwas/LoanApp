@@ -31,10 +31,13 @@ public class CustomerDashboardController {
 	@RequestMapping("/customerDashboard")
 	public String customerDashboard(Model model, HttpServletRequest request) {
 		
-		// Need to obtain Customer or User ID from session or request, just using 1 for now
+		
+		// this is how im expecting to recieve the customerId, subject to change
+		int customerId = (int) request.getSession().getAttribute("customerId");
+		
 			
 		// get the customers loans
-		List<Loan> loans =  jdbcTemplate.query("select * from LOAN_APP_LOANS where CUSTOMER_ID = 1", new RowMapper<Loan>() {
+		List<Loan> loans =  jdbcTemplate.query("select * from LOAN_APP_LOANS where CUSTOMER_ID = "+customerId, new RowMapper<Loan>() {
 			public Loan mapRow(ResultSet rs, int rowNum) throws SQLException{
 				Loan loan = new Loan();
 				loan.setLoanID(rs.getInt("LOAN_ID"));
@@ -61,11 +64,11 @@ public class CustomerDashboardController {
 		
 		// get the customers first name
 		String customerFirstName = (String) jdbcTemplate.queryForObject(
-		        "select FIRST_NAME from LOAN_APP_USERS where CUSTOMER_INFO = ?", new Object[] { 1 }, String.class);
+		        "select FIRST_NAME from LOAN_APP_USERS where CUSTOMER_INFO = ?", new Object[] { customerId }, String.class);
 		
 		// get the customers last name
 		String customerLastName = (String) jdbcTemplate.queryForObject(
-				        "select LAST_NAME from LOAN_APP_USERS where CUSTOMER_INFO = ?", new Object[] { 1 }, String.class);
+				        "select LAST_NAME from LOAN_APP_USERS where CUSTOMER_INFO = ?", new Object[] { customerId }, String.class);
 		
 		model.addAttribute("customerName", customerFirstName + " " + customerLastName);
 		model.addAttribute("loans", loans);

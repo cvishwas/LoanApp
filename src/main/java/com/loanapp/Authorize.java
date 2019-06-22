@@ -8,13 +8,10 @@ import java.sql.SQLException;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.jdbc.core.JdbcTemplate;
-
 import com.loanapp.beans.DBProperties;
 import com.loanapp.configuration.DatabaseConfig;
 
-//import com.bank.app.LoginBean;
-
-public class Authenticate {
+public class Authorize {
 
 	@Autowired
 	JdbcTemplate jdbcTemplate;
@@ -24,28 +21,23 @@ public class Authenticate {
 	private static final String DB_PASS = DBProperties.getPassword();
 	private static final String DB_TABLE = DBProperties.getTableName();
 
-		public static boolean validate(LoginBean bean){  
-				boolean status=false; 
-				
-				try{         
-				Class.forName(DB_DRIVER); 				
-				Connection con = DriverManager.getConnection(DB_URL,DB_USER,DB_PASS);								
-				PreparedStatement ps=con.prepareStatement(  
-				    "select * from " + DB_TABLE + " where username=? and password=?"); 			
-				ps.setString(1,bean.getUsername());  
-				ps.setString(2,bean.getPassword()); 
-				ResultSet rs=ps.executeQuery(); 
-				status=rs.next(); 
-				return status;
-				}catch (ClassNotFoundException e)
-				{
-					e.printStackTrace();
-				}
-				catch (SQLException ex)
-				{
-					ex.printStackTrace();
-				}
-				return status;
-
+	public static String authorize(LoginBean bean) {
+		String role = "undetermined";
+		try {
+			Class.forName(DB_DRIVER);
+			Connection con = DriverManager.getConnection(DB_URL, DB_USER, DB_PASS);
+			PreparedStatement ps = con.prepareStatement("select * from " + DB_TABLE + " where username=?");
+			ps.setString(1, bean.getUsername());
+			ResultSet rs = ps.executeQuery();
+			rs.next();
+			role = rs.getString("role");
+			rs.close();
+		} catch (ClassNotFoundException e) {
+			e.printStackTrace();
+		} catch (SQLException ex) {
+			ex.printStackTrace();
+		} finally {
+			return role;
 		}
+	}
 }

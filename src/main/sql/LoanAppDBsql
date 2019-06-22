@@ -4,14 +4,14 @@ last_name varchar(255),
 user_login varchar(255),
 user_pass varchar(255),
 user_role varchar(255),
-user_id int,
-customer_info int,
+user_id number generated always as identity,
+customer_info number,
 PRIMARY KEY (user_id),
 FOREIGN KEY (customer_info) REFERENCES loan_app_customer_info (customer_id)
 );
 
 create table loan_app_customer_info(
-customer_id int,
+customer_id number generated always as identity,
 customer_ssn int,
 customer_address varchar(255),
 customer_city varchar(255),
@@ -26,7 +26,7 @@ PRIMARY KEY (customer_id)
 );
 
 create table loan_app_loan_types(
-loan_id int,
+loan_id number generated always as identity,
 loan_type varchar(255), 
 PRIMARY KEY (loan_id)
 );
@@ -37,15 +37,15 @@ insert into loan_app_loan_types values(3, 'Auto');
 insert into loan_app_loan_types values(4, 'Business');
 
 create table loan_app_loans(
-loan_id int,
-loan_type int,
+loan_id number generated always as identity,
+loan_type number,
 customer_id int,
 amount number,
 start_date date,
 loan_duration int,
 interest_rate number,
 loan_status varchar(255),
-review_status varchar(255),
+email_status varchar(1),
 down_payment number,
 PRIMARY KEY (loan_id),
 FOREIGN KEY (loan_type) REFERENCES loan_app_loan_types (loan_id),

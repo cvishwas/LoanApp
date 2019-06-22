@@ -1,5 +1,5 @@
 package com.loanapp.beans;
-
+//comment
 public class LoanDataUnderwriter 
 {
 	private int loanId;

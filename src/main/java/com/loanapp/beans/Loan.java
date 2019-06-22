@@ -31,6 +31,14 @@ public class Loan {
     public Loan() {
 
     }
+    
+    // Another constructor (Added and used by Jackie, if this causes merge problems I'm sorry.)
+    public Loan(int loanID, int loanType, String loanStatus, String startDate) {
+    	this.loanID = loanID;
+    	this.loanType = loanType;
+    	this.loanStatus = loanStatus;
+    	this.startDate = startDate;
+    }
 
     // Getters and Setters
     public int getLoanID() { return loanID; }

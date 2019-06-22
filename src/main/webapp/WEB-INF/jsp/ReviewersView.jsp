@@ -66,7 +66,7 @@
 			</div>
 		</div>
 		<div class="bottom-container" style="text-align: center;">
-			<table class="table table-hover">
+			<table class="table table-hover" id="loanTable">
 				<tr>
 					<th scope="col"> Loan ID </th>
 					<th scope="col"> Amount </th>
@@ -126,6 +126,18 @@
 			
 		})
 	})
+</script>
+
+<!-- Script for table dropdown -->
+<script>
+		$(document).ready(function) {
+			$("#dropdownMenu2").change(function() {
+				var value = $(this).val().toLowerCase();
+				$("#loanTable tr").filter(function() {
+					$(this).toggle($(this).text().toLowerCase().indexOf(value) > - 1)
+				});
+			});
+		});	
 </script>
 
 </body>

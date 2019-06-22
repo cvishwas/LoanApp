@@ -66,28 +66,23 @@
 			</div>
 		</div>
 		<div class="bottom-container" style="text-align: center;">
-			<div class="row from-group">
-				<div class="col-md-4">
-					<div>Loan ID</div>
-				</div>
-				<div class="col-md-4">Loan Type</div>
-				<div class="col-md-4">Review</div>
-			</div>
-
-
-			<!-- Going to use this row div to create the table going forward -->
-			<div class="row from-group">
-				<div class="col-md-4">Loan Status: (clicking one should change
-					status to db)</div>
-				<div class="col-md-4">
-				</div>
-				<div class="col-md-4">
-					<!-- Button trigger modal -->
-					<button type="button" class="btn btn-primary" data-toggle="modal"
-						data-target="#myModal">Review</button>
-
-				</div>
-			</div>
+			<table class="table table-hover">
+				<tr>
+					<th scope="col"> Loan ID </th>
+					<th scope="col"> Amount </th>
+					<th scope="col"> Type </th>
+					<th scope="col"> Review </th>
+				</tr>
+				<tr>
+					<th scope="row"> #1 </th>
+					<td> $10,000 </td>
+					<td> Mortgage </td>
+					<td> <button type = "button" class="btn btn-primary" data-toggle="modal" 
+					data-target="exampleModal">Review</button></td>
+				</tr>
+			</table>
+			
+			
 		</div>
 		<hr />
 	</div>
@@ -122,5 +117,16 @@
 			</div>
 		</div>
 	</div>
+	
+<script>
+	$(document).ready(function() {
+		$('#myModal').on('show.bs.modal', function (event) {
+			var button = $(event.relatedTarget)
+			var loanid = button.data('loanid')
+			
+		})
+	})
+</script>
+
 </body>
 </html>

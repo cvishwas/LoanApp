@@ -54,13 +54,13 @@
 						aria-haspopup="true" aria-expanded="false">All Loans</button>
 					<div class="dropdown-menu" aria-labelledby="dropdownMenu2">
 						<button class="dropdown-item" type="button" id="dropdown-mortgage"
-							value="Mortgage">Mortgage</button>
+							data-value="Mortgage">Mortgage</button>
 						<button class="dropdown-item" type="button" id="dropdown-personal"
-							value="Personal">Personal</button>
+							data-value="Personal">Personal</button>
 						<button class="dropdown-item" type="button" id="dropdown-auto"
-							value="Auto">Auto</button>
+							data-value="Auto">Auto</button>
 						<button class="dropdown-item" type="button" id="dropdown-business"
-							value="Business">Business</button>
+							data-value="Business">Business</button>
 					</div>
 				</div>
 			</div>
@@ -79,7 +79,10 @@
 						<td>${loan.amount}</td>
 						<td>${types[loan.loanType-1]} </td>
 						<td> <button type = "button" class="btn btn-primary" data-toggle="modal" 
-						data-target="exampleModal" value="${loan.loanID}">Review</button></td>
+						data-target="#myModal" data-loanid="${loan.loanID}" data-loantype = "${types[loan.loanTypes-1]}" 
+							data-custname="${customerName}" data-amount = "${loan.amount}" data-startdate="${loan.startDate}" 
+								data-loanduration = "${loan.loanDuration}" data-interestrate = "${loan.interestRate}" 
+									data-downpayment = "${loan.downPayment}">Review</button></td>
 					</tr>
 				</c:forEach>
 			</table>
@@ -124,10 +127,27 @@
 	$(document).ready(function() {
 		$('#myModal').on('show.bs.modal', function (event) {
 			var button = $(event.relatedTarget)
-			var loanid = button.data('loanID')
+			var loanid = button.data('loanid')
+			var loantype = button.data('loantype')
+			var custname = button.data('custname')
+			var amount = button.data('amount')
+			var startdate = button.data('startdate')
+			var loanduration = button.data('loanduration')
+			var interestrate = button.data('interestrate')
+			var downpayment = button.data('downpayment')
 			
-		})
-	})
+			var body = "Loan Type: <br>" + loantype + "<br> Customer Name: <br>" + custname + "<br> Loan Amount: <br>" + 
+							custname + "<br> Amount: <br>" + amount + "<br> Start Date: <br>" + startdate + "<br> Loan Duration: <br>" +
+							loanduration + "<br> Interest Rate: <br>" + interestrate + "<br> Down Payment: " + downpayment
+			var modal = $(this)
+			modal.find('.modal-title').text(loanid)
+			modal.find('.modal-body').text(body)
+			
+			modal.find('button.btn-danger').val(loanid)
+			modal.find('button.btn-light').val(loanid)
+		});
+	});
+	
 </script>
 
 <!-- Script for table dropdown -->

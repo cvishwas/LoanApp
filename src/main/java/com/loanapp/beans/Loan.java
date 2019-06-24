@@ -58,7 +58,7 @@ public class Loan {
     public String getLoanStatus() { return loanStatus; }
     public void setLoanStatus(String loanStatus) { this.loanStatus = loanStatus; }
     public String getEmailStatus() { return emailStatus; }
-    public void setEmailStatus(String reviewStatus) { this.emailStatus = emailStatus; }
+    public void setReviewStatus(String reviewStatus) { this.emailStatus = emailStatus; }
     public double getDownPayment() { return downPayment; }
     public void setDownPayment(double downPayment) { this.downPayment = downPayment; }
 }

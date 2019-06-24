@@ -11,7 +11,7 @@ import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.stereotype.Repository;
 
 
-import com.loanapp.beans.DBProperties;
+import com.loanapp.beans.UnderWriterDBHelper;
 import com.loanapp.beans.LoanDataUnderwriter;
 
 @Repository
@@ -19,7 +19,7 @@ public class UnderwriterDao {
 
 	
 	@Autowired
-	DBProperties database;
+	UnderWriterDBHelper database;
 
 	@Autowired
 	JdbcTemplate jdbcTemplate;

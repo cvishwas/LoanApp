@@ -113,9 +113,9 @@
 
 					</div>
 					<div class="modal-footer">
-						<button type="submit" class="btn btn-success">Review
+						<button type="submit" class="btn btn-success" value="completed">Review
 							Completed</button>
-						<button type="submit" class="btn btn-light">Need more
+						<button type="submit" class="btn btn-light" value="need more information">Need more
 							information</button>
 					</div>
 				</div>

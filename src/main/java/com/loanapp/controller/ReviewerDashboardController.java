@@ -12,7 +12,9 @@ import javax.servlet.http.HttpServletRequest;
 import org.springframework.jdbc.core.RowMapper;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.jdbc.core.JdbcTemplate;
 
@@ -69,11 +71,26 @@ public class ReviewerDashboardController {
 			name.add(fName + " " + lName);
 		}
 		
+		
+		
 		model.addAttribute("customerName", name);
 		model.addAttribute("loans", loans);
 		model.addAttribute("types", types);
 		return "ReviewersView";
 		
+	}
+	
+	@RequestMapping(value="completed", method = RequestMethod.POST) 
+	public String update(@ModelAttribute("loanid") int i) {
+			jdbcTemplate.update("update LOAN_APP_LOANS set LOAN_STATUS = 'reviewed' where LOAN_ID =" + i);
+		return "ReviewersView";
+		
+	}
+	
+	@RequestMapping(value="need more information", method = RequestMethod.POST)
+	public String update2(@ModelAttribute("loanid") int s) {
+		jdbcTemplate.update("update LOAN_APP_LOANS set LOAN_STATUS = 'need more information' where LOAN_ID =" + s);
+		return "ReviewersView";
 	}
 
 }

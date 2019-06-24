@@ -13,24 +13,26 @@
 <br><center> <font size=6 color="Brown"><b> UNDERWRITER DASHBOARD</b> </font> </center>
 <br>
 	<div class="container">
-		<div class="mt-5">
+		<div class="mt-7">
 			<div class="row form-group">
 				<div class="col-sm-1 font-weight-bold ">
 					Loan Id
-				</div>				
-				<div class="col-sm-1 font-weight-bold">
-					Customer Name
-				</div>
+				</div>	
 				<div class="col-sm-2 font-weight-bold ">
 					Loan Type
+				</div>			
+				<div class="col-sm-2 font-weight-bold">
+					Customer Id
 				</div>
+				
 				<div class="col-sm-2 font-weight-bold">
 					Loan Status
 				</div>
 				<div class="col-sm-2 font-weight-bold">
 					Review Status
 				</div>
-				 <div class="col-sm-2 font-weight-bold">					
+			 
+				 <div class="col-sm-1 font-weight-bold">					
 				</div>
 				<div class="col-sm-1 font-weight-bold">					
 				</div>
@@ -42,21 +44,23 @@
 				<c:forEach var="item" items="${undList}">
 					<div class="row form-group">
 						<div class="col-sm-1 ">
-							${item.loanId}
-						</div>
-						<div class="col-sm-1 ">
-							${item.custName}
-						</div>
-						<div class="col-sm-2 ">
-							${item.loanType}
-						</div>
-						<div class="col-sm-2 ">
-							${item.loanStatus}
-						</div>
-						<div class="col-sm-2">
-							${item.reviewStatus}
+							${item.loan_Id}
 						</div>
 						
+						<div class="col-sm-2 ">
+							${item.loan_Type}
+						</div>
+						
+						<div class="col-sm-2 ">
+							${item.customer_Id}
+						</div>
+						
+						<div class="col-sm-2 ">
+							${item.loan_Status}
+						</div>
+					  	<div class="col-sm-2">
+							${item.review_Status}
+						</div>
 						<div class="col-sm-2">
 							<button  class="btn btn-outline-success btn-block">Approve</button>
 						</div>

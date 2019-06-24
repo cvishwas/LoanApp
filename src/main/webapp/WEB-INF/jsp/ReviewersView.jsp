@@ -54,40 +54,40 @@
 						aria-haspopup="true" aria-expanded="false">All Loans</button>
 					<div class="dropdown-menu" aria-labelledby="dropdownMenu2">
 						<button class="dropdown-item" type="button" id="dropdown-mortgage"
-							value="Mortgage">Mortgage</button>
+							data-value="Mortgage">Mortgage</button>
 						<button class="dropdown-item" type="button" id="dropdown-personal"
-							value="Personal">Personal</button>
+							data-value="Personal">Personal</button>
 						<button class="dropdown-item" type="button" id="dropdown-auto"
-							value="Auto">Auto</button>
+							data-value="Auto">Auto</button>
 						<button class="dropdown-item" type="button" id="dropdown-business"
-							value="Business">Business</button>
+							data-value="Business">Business</button>
 					</div>
 				</div>
 			</div>
 		</div>
 		<div class="bottom-container" style="text-align: center;">
-			<div class="row from-group">
-				<div class="col-md-4">
-					<div>Loan ID</div>
-				</div>
-				<div class="col-md-4">Loan Type</div>
-				<div class="col-md-4">Review</div>
-			</div>
-
-
-			<!-- Going to use this row div to create the table going forward -->
-			<div class="row from-group">
-				<div class="col-md-4">Loan Status: (clicking one should change
-					status to db)</div>
-				<div class="col-md-4">
-				</div>
-				<div class="col-md-4">
-					<!-- Button trigger modal -->
-					<button type="button" class="btn btn-primary" data-toggle="modal"
-						data-target="#myModal">Review</button>
-
-				</div>
-			</div>
+			<table class="table table-hover" id="loanTable">
+				<tr>
+					<th scope="col"> Loan ID </th>
+					<th scope="col"> Amount </th>
+					<th scope="col"> Type </th>
+					<th scope="col"> Review </th>
+				</tr>
+				<c:forEach items="${loans}" var="loan" varStatus="LoopStatus">
+					<tr>
+						<th scope="row">${loan.loanID} </th>
+						<td>${loan.amount}</td>
+						<td>${types[loan.loanType-1]} </td>
+						<td> <button type = "button" class="btn btn-primary" data-toggle="modal" 
+						data-target="#myModal" data-loanid="${loan.loanID}" data-loantype = "${types[loan.loanTypes-1]}" 
+							data-custname="${customerName}" data-amount = "${loan.amount}" data-startdate="${loan.startDate}" 
+								data-loanduration = "${loan.loanDuration}" data-interestrate = "${loan.interestRate}" 
+									data-downpayment = "${loan.downPayment}">Review</button></td>
+					</tr>
+				</c:forEach>
+			</table>
+			
+			
 		</div>
 		<hr />
 	</div>
@@ -113,14 +113,54 @@
 
 					</div>
 					<div class="modal-footer">
-						<button type="submit" class="btn btn-success">Review
+						<button type="submit" class="btn btn-success" value="completed">Review
 							Completed</button>
-						<button type="submit" class="btn btn-light">Need more
+						<button type="submit" class="btn btn-light" value="need more information">Need more
 							information</button>
 					</div>
 				</div>
 			</div>
 		</div>
 	</div>
+	
+<script>
+	$(document).ready(function() {
+		$('#myModal').on('show.bs.modal', function (event) {
+			var button = $(event.relatedTarget)
+			var loanid = button.data('loanid')
+			var loantype = button.data('loantype')
+			var custname = button.data('custname')
+			var amount = button.data('amount')
+			var startdate = button.data('startdate')
+			var loanduration = button.data('loanduration')
+			var interestrate = button.data('interestrate')
+			var downpayment = button.data('downpayment')
+			
+			var body = "Loan Type: <br>" + loantype + "<br> Customer Name: <br>" + custname + "<br> Loan Amount: <br>" + 
+							custname + "<br> Amount: <br>" + amount + "<br> Start Date: <br>" + startdate + "<br> Loan Duration: <br>" +
+							loanduration + "<br> Interest Rate: <br>" + interestrate + "<br> Down Payment: " + downpayment
+			var modal = $(this)
+			modal.find('.modal-title').text(loanid)
+			modal.find('.modal-body').text(body)
+			
+			modal.find('button.btn-danger').val(loanid)
+			modal.find('button.btn-light').val(loanid)
+		});
+	});
+	
+</script>
+
+<!-- Script for table dropdown -->
+<script>
+		$(document).ready(function) {
+			$("#dropdownMenu2").change(function() {
+				var value = $(this).data("value").toLowerCase();
+				$("#loanTable tr").filter(function() {
+					$(this).toggle($(this).text().toLowerCase().indexOf(value) > - 1)
+				});
+			});
+		});	
+</script>
+
 </body>
 </html>

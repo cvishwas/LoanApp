@@ -2,58 +2,67 @@ package com.loanapp.beans;
 //comment
 public class LoanDataUnderwriter 
 {
-	private int loanId;
-	private String custName;
-	private String loanType;
-	private String loanStatus;
-	private String reviewStatus;
+	private int loan_Id;
+	private int loan_Type;
+	private int customer_Id;
+	private String loan_Status;
+	private String review_Status;
+	
+	public String getReview_Status() {
+		return review_Status;
+	}
 
-	public LoanDataUnderwriter(int loadId,String custName, String loanType, String loanStatus, String reviewStatus) 
+	public void setReview_Status(String review_Status) {
+		this.review_Status = review_Status;
+	}
+
+	public LoanDataUnderwriter(int load_Id, int loan_Type,int customer_Id,String loan_Status,String review_Status) 
 	{
-		this.loanId = loadId;
-		this.custName=custName;
-		this.loanType = loanType;
-		this.loanStatus = loanStatus;
-		this.reviewStatus = reviewStatus;
+		this.loan_Id = load_Id;
+		this.loan_Type=loan_Type;
+		this.customer_Id = customer_Id;
+		this.loan_Status = loan_Status;
+		this.review_Status = review_Status;
 	}
 
-	public int getLoanId() {
-		return loanId;
+	public int getLoan_Id() {
+		return loan_Id;
 	}
 
-	public void setLoanId(int loanId) {
-		this.loanId = loanId;
-	}
-	public String getcustName() {
-		return custName;
+	public void setLoan_Id(int loan_Id) {
+		this.loan_Id = loan_Id;
 	}
 
-	public void setcustName(String custName) {
-		this.custName = custName;
-	}
-	public String getLoanType() {
-		return loanType;
+	public int getLoan_Type() {
+		return loan_Type;
 	}
 
-	public void setLoanType(String loanType) {
-		this.loanType = loanType;
+	public void setLoan_Type(int loan_Type) {
+		this.loan_Type = loan_Type;
 	}
 
-	public String getLoanStatus() {
-		return loanStatus;
+	public int getCustomer_Id() {
+		return customer_Id;
 	}
 
-	public void setLoanStatus(String loanStatus) {
-		this.loanStatus = loanStatus;
+	public void setCustomer_Id(int customer_Id) {
+		this.customer_Id = customer_Id;
+	}
+	public String getLoan_Status() {
+		return loan_Status;
 	}
 
-	public String getReviewStatus() {
-		return reviewStatus;
+	public void setLoan_Status(String loan_Status) {
+		this.loan_Status = loan_Status;
 	}
 
-	public void setReviewStatus(String reviewStatus) {
-		this.reviewStatus = reviewStatus;
+	@Override
+	public String toString() {
+		return "LoanDataUnderwriter [loan_Id=" + loan_Id + ", loan_Type=" + loan_Type 
+				+ ", loan_Status=" + loan_Status + ", review_Status=" + review_Status + "]";
 	}
+
+	
 
 	
 }

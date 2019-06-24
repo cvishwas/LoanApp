@@ -9,6 +9,7 @@ import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.jdbc.core.RowMapper;
 import org.springframework.stereotype.Repository;
 
+import com.loanapp.beans.DBProperties;
 import com.loanapp.beans.LoanData;
 import com.loanapp.beans.User;
 
@@ -23,7 +24,7 @@ import com.loanapp.beans.User;
 public class ManagerRepo 
 {
 	@Autowired
-	MySqlProperties database;
+	DBProperties database;
 	
 	@Autowired
 	JdbcTemplate jdbcTemplate;

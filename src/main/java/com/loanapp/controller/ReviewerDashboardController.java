@@ -45,7 +45,7 @@ public class ReviewerDashboardController {
 				loan.setLoanDuration(rs.getInt("LOAN_DURATION"));
 				loan.setInterestRate(rs.getDouble("INTEREST_RATE"));
 				loan.setLoanStatus(rs.getString("LOAN_STATUS"));
-				loan.setEmailStatus(rs.getString("EMAIL_STATUS"));
+				loan.setReviewStatus(rs.getString("EMAIL_STATUS"));
 				loan.setDownPayment(rs.getDouble("DOWN_PAYMENT"));
 				
 				return loan;

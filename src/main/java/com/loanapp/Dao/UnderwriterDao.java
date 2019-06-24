@@ -1,4 +1,4 @@
-package com.loanapp.dao;
+package com.loanapp.Dao;
 
 import java.sql.ResultSet;
 import java.sql.SQLException;

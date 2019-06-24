@@ -9,12 +9,12 @@ public class Loan {
     private int loanDuration;       // Months
     private double interestRate;
     private String loanStatus;
-    private String reviewStatus;
+    private String emailStatus;
     private double downPayment;
 
     // Constructor with all parameters specified
     public Loan(int loanID, int loanType, int customerID, double amount, String startDate, int loanDuration,
-                double interestRate, String loanStatus, String reviewStatus, double downPayment) {
+                double interestRate, String loanStatus, String emailStatus, double downPayment) {
         this.loanID = loanID;
         this.loanType = loanType;
         this.customerID = customerID;
@@ -23,7 +23,7 @@ public class Loan {
         this.loanDuration = loanDuration;
         this.interestRate = interestRate;
         this.loanStatus = loanStatus;
-        this.reviewStatus = reviewStatus;
+        this.emailStatus = emailStatus;
         this.downPayment = downPayment;
     }
 
@@ -49,8 +49,8 @@ public class Loan {
     public void setInterestRate(double interestRate) { this.interestRate = interestRate; }
     public String getLoanStatus() { return loanStatus; }
     public void setLoanStatus(String loanStatus) { this.loanStatus = loanStatus; }
-    public String getReviewStatus() { return reviewStatus; }
-    public void setReviewStatus(String reviewStatus) { this.reviewStatus = reviewStatus; }
+    public String getEmailStatus() { return emailStatus; }
+    public void setEmailStatus(String reviewStatus) { this.emailStatus = emailStatus; }
     public double getDownPayment() { return downPayment; }
     public void setDownPayment(double downPayment) { this.downPayment = downPayment; }
 }

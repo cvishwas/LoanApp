@@ -73,13 +73,15 @@
 					<th scope="col"> Type </th>
 					<th scope="col"> Review </th>
 				</tr>
-				<tr>
-					<th scope="row"> #1 </th>
-					<td> $10,000 </td>
-					<td> Mortgage </td>
-					<td> <button type = "button" class="btn btn-primary" data-toggle="modal" 
-					data-target="exampleModal">Review</button></td>
-				</tr>
+				<c:forEach items="${loans}" var="loan" varStatus="LoopStatus">
+					<tr>
+						<th scope="row">${loan.loanID} </th>
+						<td>${loan.amount}</td>
+						<td>${types[loan.loanType-1]} </td>
+						<td> <button type = "button" class="btn btn-primary" data-toggle="modal" 
+						data-target="exampleModal" value="${loan.loanID}">Review</button></td>
+					</tr>
+				</c:forEach>
 			</table>
 			
 			
@@ -122,7 +124,7 @@
 	$(document).ready(function() {
 		$('#myModal').on('show.bs.modal', function (event) {
 			var button = $(event.relatedTarget)
-			var loanid = button.data('loanid')
+			var loanid = button.data('loanID')
 			
 		})
 	})
@@ -132,7 +134,7 @@
 <script>
 		$(document).ready(function) {
 			$("#dropdownMenu2").change(function() {
-				var value = $(this).val().toLowerCase();
+				var value = $(this).data("value").toLowerCase();
 				$("#loanTable tr").filter(function() {
 					$(this).toggle($(this).text().toLowerCase().indexOf(value) > - 1)
 				});

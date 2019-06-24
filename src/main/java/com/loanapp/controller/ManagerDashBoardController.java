@@ -7,7 +7,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.servlet.ModelAndView;
 
-import com.loanapp.Dao.ManagerRepo;
+import com.loanapp.dao.ManagerRepo;
 
 @RestController
 public class ManagerDashBoardController 

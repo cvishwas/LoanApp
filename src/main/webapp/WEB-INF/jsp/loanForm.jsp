@@ -21,60 +21,60 @@
 				<div class="form-row">
 					<div class="form-group col-md-4">
 						<label class="control-label">First Name</label> <input type="text"
-							class="form-control" id="" placeholder="First Name" required>
+							class="form-control" name="firstname" placeholder="First Name" required>
 					</div>
 					<div class="form-group col-md-4">
 						<label class="control-label"> Last Name</label> <input type="text"
-							class="form-control" id="" placeholder="Last Name" required>
+							class="form-control" name="lastname" placeholder="Last Name" required>
 					</div>
 					<div class="form-group col-md-4">
 						<label class="control-label"> Date of Birth</label> <input
-							type="date" class="form-control" id="" required>
+							type="date" class="form-control" name="DoB" required>
 					</div>
 				</div>
 				<div class="form-row">
 					<div class="form-group col-md-4">
 						<label class="control-label" for="">City</label> <input
-							type="text" class="form-control" id="" placeholder="City"
+							type="text" class="form-control" name="city" placeholder="City"
 							required>
 					</div>
 					<div class="form-group col-md-2">
 						<label class="control-label" for="">State</label> <input
-							type="text" class="form-control" id="" placeholder="State"
+							type="text" class="form-control" name="state" placeholder="State"
 							required>
 					</div>
 					<div class="form-group col-md-2">
 						<label class="control-label" for="">Zip Code</label> <input
-							type="text" class="form-control" id="" placeholder="Zip" required>
+							type="text" class="form-control" name="zip" placeholder="Zip" required>
 					</div>
 					<div class="form-group col-md-4">
 						<label for="">Country</label> <input type="text"
-							class="form-control" id="" placeholder="Country" required>
+							class="form-control" name="country" placeholder="Country" required>
 					</div>
 					<div class="form-row">
 						<div class="form-group col-md-6">
 							<label class="control-label" for="">SSN</label> <input
-								type="text" class="form-control" id="" placeholder="SSN"
+								type="text" class="form-control" name="ssn" placeholder="SSN"
 								required>
 						</div>
 						<div class="form-group col-md-6">
 							<label class="control-label" for="">Phone Number</label> <input
-								type="text" class="form-control" id=""
+								type="text" class="form-control" name="phoneNum"
 								placeholder="Phone Number" required>
 						</div>
 						<div class="form-row">
 							<div class="form-group col-md-4">
 								<label class="control-label" for="">Salary</label> <input
-									type="text" class="form-control">
+									type="text" class="form-control" name="salary">
 							</div>
 							<div class="form-group col-md-4">
 								<label class="control-label" for="">Credit Score</label> <input
-									type="text" class="form-control" id=""
+									type="text" class="form-control" name="creditScore"
 									placeholder="Credit Score" placeholder="Amount" required>
 							</div>
 							<div class="form-group col-md-4">
 								<label class="control-label" for="">Marital status</label> <select
-									id="inputState" class="form-control">
+									name="maritalStatus" class="form-control">
 									<option selected>Choose...</option>
 									<option>Single</option>
 									<option>Married</option>
@@ -91,16 +91,12 @@
 				<div class="form-group">
 					<label class="control-label" for="">Lone type</label>
 					<div class="custom-control custom-radio custom-control-inline">
-						<input type="radio" id="customRadioInline1"
-							name="customRadioInline1" class="custom-control-input"> <label
-							class="custom-control-label" for="customRadioInline1">type
-							1</label>
+						<input type="radio" name="personal" name="customRadioInline1" class="custom-control-input"> <label
+							class="custom-control-label" for="customRadioInline1">personal</label>
 					</div>
 					<div class="custom-control custom-radio custom-control-inline">
-						<input type="radio" id="customRadioInline2"
-							name="customRadioInline1" class="custom-control-input"> <label
-							class="custom-control-label" for="customRadioInline2">type
-							2</label>
+						<input type="radio" name="mortgage" class="custom-control-input"> <label
+							class="custom-control-label" for="customRadioInline2">mortgage</label>
 					</div>
 				</div>
 				<div class="form-row">

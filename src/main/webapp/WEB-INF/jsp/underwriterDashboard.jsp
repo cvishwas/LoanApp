@@ -1,3 +1,4 @@
+
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
@@ -28,6 +29,10 @@
 				<div class="col-sm-2 font-weight-bold">
 					Loan Status
 				</div>
+				<div class="col-sm-2 font-weight-bold">
+					Review Status
+				</div>
+			 
 				 <div class="col-sm-1 font-weight-bold">					
 				</div>
 				<div class="col-sm-1 font-weight-bold">					
@@ -54,12 +59,67 @@
 						<div class="col-sm-2 ">
 							${item.loan_Status}
 						</div>
+					  	<div class="col-sm-2">
+							${item.review_Status}
+						</div>
 						<div class="col-sm-2">
-							<button  class="btn btn-outline-success btn-block">Approve</button>
+							<button  class="Approve" type="button" onclick="apbutton()" name="apbutton">Approve</button>
 						</div>
+						<%
+							import java.sql.*;
+							import java.sql.Connection;
+							import java.sql.DriverManager;
+							
+							public void apbutton()
+							{
+								Connection con = null;
+
+								try
+								{
+									con=DriverManager.getConnection("jdbc:mysql:" + "user=mpatel&password=mpatel");
+
+									Statement stm = con.createStatement();
+
+									sql = "UPDATE Loans
+										   SET Status = 'true'	
+
+									stm.executeUpdate(sql);							
+								}
+								catch(SQLException ex)
+								{
+									System.out.println(ex);
+								}
+							}
+						%>
 						<div class="col-sm-1">
-							<button class="btn btn-outline-success btn-block">Deny</button>
+							<button class="Deny" type="button" onclick="dbutton()" name="dbutton">Deny</button>
 						</div>
+						<%
+							import java.sql.*;
+							import java.sql.Connection;
+							import java.sql.DriverManager;
+							
+							public void dbutton()
+							{
+								Connection con = null;
+
+								try
+						 		{
+									con=DriverManager.getConnection("jdbc:mysql:" + "user=mpatel&password=mpatel");
+
+									Statement stm = con.createStatement();
+
+									sql = "UPDATE Loans
+										   SET Status = 'false'
+
+									stm.executeUpdate(sql);								
+								}
+								catch(SQLException ex)
+								{
+									System.out.println(ex);
+								}
+							}
+						%>
 					</div>
 				</c:forEach>
 

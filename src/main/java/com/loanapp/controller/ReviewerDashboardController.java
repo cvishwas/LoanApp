@@ -48,22 +48,23 @@ public class ReviewerDashboardController {
 				loan.setReviewStatus(rs.getString("EMAIL_STATUS"));
 				loan.setDownPayment(rs.getDouble("DOWN_PAYMENT"));
 				
+				
 				return loan;
 			}
 		
 		});
 		
-		for(Loan i: loans) {
-			jdbcTemplate.execute("update LOAN_APP_LOANS set LOAN_STATUS = 'in review' where LOAN_ID = " + i.getLoanID() + ";");
-		}
-		
+//		for(Loan i: loans) {
+//			jdbcTemplate.execute("update LOAN_APP_LOANS set LOAN_STATUS = 'in review' where LOAN_ID = " + i.getLoanID() + ";");
+//		}
+//		
 		List<String> types = jdbcTemplate.query("select LOAN_TYPE from LOAN_APP_LOAN_TYPES order by LOAN_ID", new RowMapper<String>() {
 			public String mapRow(ResultSet rs, int rowNum) throws SQLException{
 				return rs.getString(1);
 			}
 		});
 		
-		List<String> name = Collections.<String>emptyList();
+		ArrayList<String> name = new ArrayList<String>();
 		
 		for(int i =0; i < loans.size(); i++) {
 			String fName = (String) jdbcTemplate.queryForObject("select FIRST_NAME from LOAN_APP_USERS where USER_ID= ?", new Object[] { loans.get(i).getCustomerID()}, String.class);

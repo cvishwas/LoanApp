@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
+	<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -79,7 +80,7 @@
 						<td>${loan.amount}</td>
 						<td>${types[loan.loanType-1]} </td>
 						<td> <button type = "button" class="btn btn-primary" data-toggle="modal" 
-						data-target="#myModal" data-loanid="${loan.loanID}" data-loantype = "${types[loan.loanTypes-1]}" 
+						data-target="#myModal" data-loanid="${loan.loanID}" data-loantype = "${types[loan.loanType-1]}" 
 							data-custname="${customerName}" data-amount = "${loan.amount}" data-startdate="${loan.startDate}" 
 								data-loanduration = "${loan.loanDuration}" data-interestrate = "${loan.interestRate}" 
 									data-downpayment = "${loan.downPayment}">Review</button></td>

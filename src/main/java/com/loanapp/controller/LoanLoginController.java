@@ -56,8 +56,8 @@ public class LoanLoginController {
           case "Underwriter":
           redirect = "/underwriterDashboard";
           break;
-          case "ReviewersView":
-          redirect = "/ReviewersView";
+          case "Reviewer":
+          redirect = "/reviewerDashboard";
           break;
         }
         response.sendRedirect(redirect);		

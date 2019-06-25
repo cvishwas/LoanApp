@@ -48,6 +48,7 @@
 	<th>Loan Type</th>
 	<th>Approval Status</th>
 	<th>Loan Start Date</th>
+	<th><button type="button" name="disperse" onClick="">Disperse Funds</button></th>
 </tr>
 <c:forEach items="${loanData}" var="loan">
 	<tr>

@@ -48,7 +48,7 @@ public class LoanLoginController {
         String redirect = "/LoanLogin";
         switch(role) {
           case "Manager":
-          redirect = "/manager-view";
+          redirect = "/managerDash";
           break;
           case "Customer":
           redirect = "/customerDashboard";

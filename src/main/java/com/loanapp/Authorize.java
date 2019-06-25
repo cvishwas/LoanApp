@@ -26,11 +26,11 @@ public class Authorize {
 		try {
 			Class.forName(DB_DRIVER);
 			Connection con = DriverManager.getConnection(DB_URL, DB_USER, DB_PASS);
-			PreparedStatement ps = con.prepareStatement("select * from " + DB_TABLE + " where username=?");
+			PreparedStatement ps = con.prepareStatement("select * from " + DB_TABLE + " where user_login=?");
 			ps.setString(1, bean.getUsername());
 			ResultSet rs = ps.executeQuery();
 			rs.next();
-			role = rs.getString("role");
+			role = rs.getString("user_role");
 			rs.close();
 		} catch (ClassNotFoundException e) {
 			e.printStackTrace();

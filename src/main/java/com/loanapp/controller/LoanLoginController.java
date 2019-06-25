@@ -54,7 +54,7 @@ public class LoanLoginController {
           redirect = "/customerDashboard";
           break;
           case "Underwriter":
-          redirect = "/underwriterDashboard";
+          redirect = "/underwriterDash";
           break;
           case "Reviewer":
           redirect = "/reviewerDashboard";

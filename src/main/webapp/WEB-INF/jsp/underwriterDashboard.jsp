@@ -59,7 +59,7 @@
 							${item.loan_Status}
 						</div>
 					  	<div class="col-sm-2">
-							${item.review_Status}
+							${item.loan_Status}
 						</div>
 						<div class="col-sm-2">
 							<button  class="btn btn-outline-success btn-block">Approve</button>

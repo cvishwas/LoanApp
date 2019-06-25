@@ -2,6 +2,9 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+<%@ page import java.sql.*; %>
+<%@ page import java.sql.Connection; %>
+<%@ page import java.sql.DriverManager; %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -66,9 +69,6 @@
 							<button  class="Approve" type="button" onclick="apbutton()" name="apbutton">Approve</button>
 						</div>
 						<%
-							import java.sql.*;
-							import java.sql.Connection;
-							import java.sql.DriverManager;
 							
 							public void apbutton()
 							{
@@ -95,9 +95,6 @@
 							<button class="Deny" type="button" onclick="dbutton()" name="dbutton">Deny</button>
 						</div>
 						<%
-							import java.sql.*;
-							import java.sql.Connection;
-							import java.sql.DriverManager;
 							
 							public void dbutton()
 							{

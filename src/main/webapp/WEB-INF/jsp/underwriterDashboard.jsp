@@ -28,10 +28,6 @@
 				<div class="col-sm-2 font-weight-bold">
 					Loan Status
 				</div>
-				<div class="col-sm-2 font-weight-bold">
-					Review Status
-				</div>
-			 
 				 <div class="col-sm-1 font-weight-bold">					
 				</div>
 				<div class="col-sm-1 font-weight-bold">					
@@ -56,9 +52,6 @@
 						</div>
 						
 						<div class="col-sm-2 ">
-							${item.loan_Status}
-						</div>
-					  	<div class="col-sm-2">
 							${item.loan_Status}
 						</div>
 						<div class="col-sm-2">

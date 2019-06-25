@@ -16,13 +16,12 @@ public class LoanDataUnderwriter
 		this.review_Status = review_Status;
 	}
 
-	public LoanDataUnderwriter(int load_Id, int loan_Type,int customer_Id,String loan_Status,String review_Status) 
+	public LoanDataUnderwriter(int load_Id, int loan_Type,int customer_Id,String loan_Status) 
 	{
 		this.loan_Id = load_Id;
 		this.loan_Type=loan_Type;
 		this.customer_Id = customer_Id;
 		this.loan_Status = loan_Status;
-		this.review_Status = review_Status;
 	}
 
 	public int getLoan_Id() {

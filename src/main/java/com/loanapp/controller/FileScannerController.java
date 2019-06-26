@@ -16,7 +16,7 @@ import org.springframework.scheduling.annotation.Scheduled;
 public class FileScannerController {
 	private static final Logger LOGGER = LoggerFactory.getLogger(FileScannerController.class);
 
-	@Scheduled(fixedDelay = 60 * 1000)
+//	@Scheduled(fixedDelay = 60 * 1000)
 	public void scanForFiles() {
 		LOGGER.info("Scanning");
 		File workingDirectory = new File("C:/temp1");

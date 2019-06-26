@@ -1,4 +1,4 @@
-package com.loanapp.dao;
+package com.loanapp.dao.impl;
 
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -9,9 +9,10 @@ import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.jdbc.core.RowMapper;
 import org.springframework.stereotype.Repository;
 
-import com.loanapp.beans.DBProperties;
 import com.loanapp.beans.LoanData;
 import com.loanapp.beans.User;
+import com.loanapp.dao.ManagerDao;
+import com.loanapp.dao.mapper.UserRowMapper;
 
 /**
  * Manager Repository class allow to retrieve loans
@@ -21,7 +22,7 @@ import com.loanapp.beans.User;
  */
 
 @Repository
-public class ManagerRepo 
+public class ManagerDaoImpl implements ManagerDao 
 {
 
 	
@@ -38,7 +39,7 @@ public class ManagerRepo
 		String sqlQuery = "select loan_app_loans.loan_id, loan_app_loan_types.loan_type, loan_status, email_status, customer_id \n" + 
 				"from loan_app_loan_types\n" + 
 				"inner join loan_app_loans\n" + 
-				"on loan_app_loan_types.loan_id = loan_app_loans.loan_type;";
+				"on loan_app_loan_types.loan_id = loan_app_loans.loan_type";
 		
 		return jdbcTemplate.query(sqlQuery, new RowMapper<LoanData>() {
 			@Override  
@@ -76,17 +77,5 @@ public class ManagerRepo
 				+ "where user_role = ? OR user_role = ?", new Object[] {"Reviewer", "Underwriter"}, new UserRowMapper());
 	}
 	
-	//Inner User row mapping class
-	private class UserRowMapper implements RowMapper<User>
-	{
-		@Override
-		public User mapRow(ResultSet rs, int rowNum) throws SQLException 
-		{
-			User user = new User();
-			user.setUserID(rs.getInt("user_id"));
-			user.setFirstName(rs.getString("first_name"));
-			user.setLastName(rs.getString("last_name"));
-			return user;
-		}
-	}
+
 }

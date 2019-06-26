@@ -15,7 +15,7 @@
 
 	<header>Login: </header>
 	
-	<form action="LoanLogin" method="post">
+	<form action="/Loans/login" method="post">
 				<table style="with: 50%">
 				<tr>
 					<td>Username</td>

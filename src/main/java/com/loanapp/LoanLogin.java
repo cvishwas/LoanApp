@@ -1,16 +1,14 @@
 package com.loanapp;
 
 import java.io.IOException;
-import java.sql.Connection;
-import java.sql.DriverManager;
-import java.sql.PreparedStatement;
-import java.sql.ResultSet;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+
+import com.loanapp.beans.LoginBean;
 
 //import com.bank.service.Authenticate;
 //import com.bank.app.LoginBean;

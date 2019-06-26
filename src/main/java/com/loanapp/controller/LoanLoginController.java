@@ -5,29 +5,36 @@ import java.util.Map;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.SessionAttributes;
+import org.springframework.web.servlet.ModelAndView;
 
-import com.loanapp.Authenticate;
-import com.loanapp.Authorize;
-import com.loanapp.LoginBean;
+import com.loanapp.beans.LoginBean;
+import com.loanapp.services.LoginServices;
 
 @Controller
 @SessionAttributes({"username","role"})
+@RequestMapping("/Loans")
 public class LoanLoginController {
+	
+@Autowired
+LoginServices loginServciesImpl;
+	
   @RequestMapping(value = "/")
-  public String LoanLogin(Map<String, Object> model) {
-  return "LoanLogin";
+  public ModelAndView LoanLogin(Map<String, LoginBean> model) {
+	  LoginBean lb = new LoginBean();
+	  return new ModelAndView("LoanLogin", "command", new LoginBean());
   }
   public void init(Model model) {
     model.addAttribute("msg", "Login");
   }
 
-  @RequestMapping(method = RequestMethod.POST)
+  @RequestMapping(value= "/login" , method = RequestMethod.POST)
   public void submit(Model model, @ModelAttribute("loginBean") LoginBean bean, HttpServletRequest request, 
 	        HttpServletResponse response) {
 	  try {
@@ -35,20 +42,17 @@ public class LoanLoginController {
 			String username = request.getParameter("username");   
 			String password = request.getParameter("password");
 			bean = new LoginBean(username,password);
-			boolean status = Authenticate.validate(bean);
+			
+			boolean status = loginServciesImpl.authenticateUser(bean);
 			//System.out.println(status);
 			if (!status){
 			       System.out.println("Invaild Username or Password"); 
 			       response.sendRedirect("/");
 			}
 			else {
-				
-			// Ryan added this line, allows identification of the user in the dashboard controllers
-			request.getSession().setAttribute("username", username);
-				
         //Everything after this point Jassandip Wrote. 
         //I couldnt test it out because I couldnt get the springapp to run when I last pulled.  
-        String role = Authorize.authorize(bean);
+        String role = loginServciesImpl.authorize(bean);
         String redirect = "/LoanLogin";
         switch(role) {
           case "Manager":
@@ -58,10 +62,10 @@ public class LoanLoginController {
           redirect = "/customerDashboard";
           break;
           case "Underwriter":
-          redirect = "/underwriterDash";
+          redirect = "/underwriterDashboard";
           break;
-          case "Reviewer":
-          redirect = "/reviewerDashboard";
+          case "ReviewersView":
+          redirect = "/ReviewersView";
           break;
         }
         response.sendRedirect(redirect);		

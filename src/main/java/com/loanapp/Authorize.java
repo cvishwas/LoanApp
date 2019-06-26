@@ -8,8 +8,9 @@ import java.sql.SQLException;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.jdbc.core.JdbcTemplate;
+
 import com.loanapp.beans.DBProperties;
-import com.loanapp.configuration.DatabaseConfig;
+import com.loanapp.beans.LoginBean;
 
 public class Authorize {
 

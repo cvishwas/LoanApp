@@ -26,7 +26,7 @@ public class Authorize {
 		try {
 			Class.forName(DB_DRIVER);
 			Connection con = DriverManager.getConnection(DB_URL, DB_USER, DB_PASS);
-			PreparedStatement ps = con.prepareStatement("select * from loan_app_user where user_login=?");
+			PreparedStatement ps = con.prepareStatement("select * from loan_app_users where user_login=?");
 			ps.setString(1, bean.getUsername());
 			ResultSet rs = ps.executeQuery();
 			rs.next();

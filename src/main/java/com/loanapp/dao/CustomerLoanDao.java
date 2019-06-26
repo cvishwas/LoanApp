@@ -21,9 +21,14 @@ public class CustomerLoanDao {
 	@Autowired
 	JdbcTemplate jdbcTemplate;
 	
-	public int getCustomerId(String username) {
+	public int getUserId(String username) {
 		return  (Integer) jdbcTemplate.queryForObject(
-				"select CUSTOMER_INFO from LOAN_APP_USERS where USER_LOGIN = '" + username + "'", Integer.class);
+				"select USER_ID from LOAN_APP_USERS where USER_LOGIN = '" + username + "'", Integer.class);
+	}
+	
+	public int getCustomerId(int userId) {
+		return  (Integer) jdbcTemplate.queryForObject(
+				"select CUSTOMER_ID from LOAN_APP_CUSTOMER_INFO where USER_ID = "+userId, Integer.class);
 	}
 	
 	public List<Loan> getLoans(int customerId){
@@ -46,16 +51,14 @@ public class CustomerLoanDao {
 		});
 	}
 	
-	public String getCustomerFirstName(int customerId) {
+	public String getCustomerFirstName(String username) {
 		return  (String) jdbcTemplate.queryForObject(
-				"select FIRST_NAME from LOAN_APP_USERS where CUSTOMER_INFO = ?", new Object[] { customerId },
-				String.class);
+				"select FIRST_NAME from LOAN_APP_USERS where USER_LOGIN = '"+username+"'", String.class);
 	}
 	
-	public String getCustomerLastName(int customerId) {
+	public String getCustomerLastName(String username) {
 		return (String) jdbcTemplate.queryForObject(
-				"select LAST_NAME from LOAN_APP_USERS where CUSTOMER_INFO = ?", new Object[] { customerId },
-				String.class);
+				"select LAST_NAME from LOAN_APP_USERS where USER_LOGIN = '"+username+"'", String.class);
 	}
 	
 	public List<String> getTypes(){

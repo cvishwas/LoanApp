@@ -20,10 +20,12 @@ public class CustomerDashboardController {
 	@RequestMapping("/customerDashboard")
 	public String customerDashboard(Model model, HttpServletRequest request) {
 		String username = (String) request.getSession().getAttribute("username");
-		System.out.println(username);
 
+		// get the userId
+		int userId = dao.getUserId(username);
+		
 		// get the customerId
-		int customerId = dao.getCustomerId(username);
+		int customerId = dao.getCustomerId(userId);
 
 		// get the customers loans
 		List<Loan> loans = dao.getLoans(customerId);
@@ -32,10 +34,10 @@ public class CustomerDashboardController {
 		List<String> types = dao.getTypes();
 
 		// get the customers first name
-		String customerFirstName = dao.getCustomerFirstName(customerId);
+		String customerFirstName = dao.getCustomerFirstName(username);
 		
 		// get the customers last name
-		String customerLastName = dao.getCustomerLastName(customerId);
+		String customerLastName = dao.getCustomerLastName(username);
 		
 		model.addAttribute("customerName", customerFirstName + " " + customerLastName);
 		model.addAttribute("loans", loans);

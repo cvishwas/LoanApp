@@ -1,6 +1,3 @@
-
-<<<<<<< HEAD
-=======
 import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -29,4 +26,3 @@ public class ManagerTimeChoice {
 		return "managerReportView";
 	}
 }
->>>>>>> refs/remotes/origin/Jackie_1

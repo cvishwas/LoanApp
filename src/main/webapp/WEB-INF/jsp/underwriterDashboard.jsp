@@ -1,10 +1,42 @@
-
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"%>
+pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
-<%@ page import java.sql.*; %>
-<%@ page import java.sql.Connection; %>
-<%@ page import java.sql.DriverManager; %>
+<%@ page import="java.io.*,java.lang.*,java.util.*,java.net.*,java.util.*,java.text.*"%>
+<%@ page import="javax.activation.*,javax.mail.*,org.apache.commons.*"%>
+<%@ page import="javax.servlet.http.*,javax.servlet.*"%>
+<%@ page import java.sql.*%>
+<%@ page import java.sql.Connection%>
+<%@ page import java.sql.DriverManager%>
+<%!
+public String Status(String AnD) {
+String res = AnD;
+Connection con;
+
+try
+{
+String query = " INSERT INTO `Loans`(`Status`) VALUES(?,)";
+con = DriverManager.getConnection("jdbc:mysql://" + "user=&password=");
+pst = con.prepareStatement(query);
+if(res == "Approve" || res == "approve")
+{
+pst.setString(1,Status.getText());
+res.setLoanStatus();
+}
+
+if(res == "Deny" || res == "deny")
+{
+pst.setString(Status.getText());
+res.setLoanStatus();
+}
+}
+catch(SQLException ex)
+{
+System.out.println(ex);
+}
+
+return res;
+}%>
+
 <!DOCTYPE html>
 <html>
 <head>
@@ -16,113 +48,67 @@
 <body style="background-color:powderblue;">
 <br><center> <font size=6 color="Brown"><b> UNDERWRITER DASHBOARD</b> </font> </center>
 <br>
-	<div class="container">
-		<div class="mt-7">
-			<div class="row form-group">
-				<div class="col-sm-1 font-weight-bold ">
-					Loan Id
-				</div>	
-				<div class="col-sm-2 font-weight-bold ">
-					Loan Type
-				</div>			
-				<div class="col-sm-2 font-weight-bold">
-					Customer Id
-				</div>
-				
-				<div class="col-sm-2 font-weight-bold">
-					Loan Status
-				</div>
-				<div class="col-sm-2 font-weight-bold">
-					Review Status
-				</div>
-			 
-				 <div class="col-sm-1 font-weight-bold">					
-				</div>
-				<div class="col-sm-1 font-weight-bold">					
-				</div>
-			</div>
-			<hr>
+<div class="container">
+<div class="mt-7">
+<div class="row form-group">
+<div class="col-sm-1 font-weight-bold ">
+Loan Id
+</div>
+<div class="col-sm-2 font-weight-bold ">
+Loan Type
+</div>
+<div class="col-sm-2 font-weight-bold">
+Customer Id
+</div>
 
-			<c:if test="${not empty undList}">
+<div class="col-sm-2 font-weight-bold">
+Loan Status
+</div>
+<div class="col-sm-2 font-weight-bold">
+Review Status
+</div>
 
-				<c:forEach var="item" items="${undList}">
-					<div class="row form-group">
-						<div class="col-sm-1 ">
-							${item.loan_Id}
-						</div>
-						
-						<div class="col-sm-2 ">
-							${item.loan_Type}
-						</div>
-						
-						<div class="col-sm-2 ">
-							${item.customer_Id}
-						</div>
-						
-						<div class="col-sm-2 ">
-							${item.loan_Status}
-						</div>
-					  	<div class="col-sm-2">
-							${item.review_Status}
-						</div>
-						<div class="col-sm-2">
-							<button  class="Approve" type="button" onclick="apbutton()" name="apbutton">Approve</button>
-						</div>
-						<%
-							
-							public void apbutton()
-							{
-								Connection con = null;
+<div class="col-sm-1 font-weight-bold">
+</div>
+<div class="col-sm-1 font-weight-bold">
+</div>
+</div>
+<hr>
 
-								try
-								{
-									con=DriverManager.getConnection("jdbc:mysql:" + "user=mpatel&password=mpatel");
+<c:if test="${not empty undList}">
 
-									Statement stm = con.createStatement();
+<c:forEach var="item" items="${undList}">
+<div class="row form-group">
+<div class="col-sm-1 ">
+${item.loan_Id}
+</div>
 
-									sql = "UPDATE Loans
-										   SET Status = 'true'	
+<div class="col-sm-2 ">
+${item.loan_Type}
+</div>
 
-									stm.executeUpdate(sql);							
-								}
-								catch(SQLException ex)
-								{
-									System.out.println(ex);
-								}
-							}
-						%>
-						<div class="col-sm-1">
-							<button class="Deny" type="button" onclick="dbutton()" name="dbutton">Deny</button>
-						</div>
-						<%
-							
-							public void dbutton()
-							{
-								Connection con = null;
+<div class="col-sm-2 ">
+${item.customer_Id}
+</div>
 
-								try
-						 		{
-									con=DriverManager.getConnection("jdbc:mysql:" + "user=mpatel&password=mpatel");
+<div class="col-sm-2 ">
+${item.loan_Status}
+</div>
+<div class="col-sm-2">
+${item.review_Status}
+</div>
 
-									Statement stm = con.createStatement();
+<form>
+<label>Approve or Deny</label><br/>
+<input type="text" name="AnD"><br/>
+<input type="submit" onClick="Status(AnD)"/>
+</form>
+</div>
+</c:forEach>
 
-									sql = "UPDATE Loans
-										   SET Status = 'false'
+</c:if>
 
-									stm.executeUpdate(sql);								
-								}
-								catch(SQLException ex)
-								{
-									System.out.println(ex);
-								}
-							}
-						%>
-					</div>
-				</c:forEach>
-
-			</c:if>
-
-		</div>
-	</div>
+</div>
+</div>
 </body>
-</html> 
+</html>

@@ -64,6 +64,6 @@
 </c:forEach>
 </table>
 <br>
-<a href="#">Main Menu</a>
+<a href="/">Log Out</a>
 </body>
 </html>

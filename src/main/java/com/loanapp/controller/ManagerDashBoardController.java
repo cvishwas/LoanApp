@@ -18,7 +18,6 @@ public class ManagerDashBoardController
 	@RequestMapping("/managerDash")
 	public ModelAndView managerView(HttpServletRequest req)
 	{
-		
 		ModelAndView modelAndView = new ModelAndView();
 		modelAndView.setViewName("manager-view");
 		modelAndView.addObject("loanData", managerRep.getLoans());
@@ -27,6 +26,4 @@ public class ManagerDashBoardController
 	
 		return modelAndView;
 	}
-
-	
 }

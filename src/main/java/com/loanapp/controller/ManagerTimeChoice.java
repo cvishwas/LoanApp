@@ -15,6 +15,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 
+import com.loanapp.beans.DBProperties;
 import com.loanapp.beans.Loan;
 
 @Controller
@@ -28,6 +29,11 @@ public class ManagerTimeChoice {
 	
 	@RequestMapping(value = "/getLoans", method = RequestMethod.POST)
 	public String obtainLoans(@RequestParam("time") String t, ModelMap model) {
+		final String DB_DRIVER = DBProperties.getDriverclassname();
+		final String DB_URL = DBProperties.getUrl();
+		final String DB_USER = DBProperties.getUsername();
+		final String DB_PASS = DBProperties.getPassword();
+		
 		ArrayList<Loan> loans = new ArrayList<Loan>();
 		int timeC = Integer.parseInt(t);
 		LocalDateTime currentDate = LocalDateTime.now();
@@ -42,8 +48,11 @@ public class ManagerTimeChoice {
 		
 		try {
 			// Change the database stuff depending on what database you use.
-			Class.forName("org.postgresql.Driver");
-			Connection con = DriverManager.getConnection("jdbc:postgresql://localhost:5432/loan", "postgres", "xdkb07cqn72");
+//			Class.forName("org.postgresql.Driver");
+//			Connection con = DriverManager.getConnection("jdbc:postgresql://localhost:5432/loan", "postgres", "xdkb07cqn72");
+			Class.forName(DB_DRIVER); 				
+			Connection con = DriverManager.getConnection(DB_URL,DB_USER,DB_PASS);	
+			
 			Statement s = con.createStatement();
 			ResultSet result = s.executeQuery(selectQuery);
 			

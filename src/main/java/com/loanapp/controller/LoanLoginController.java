@@ -52,16 +52,16 @@ public class LoanLoginController {
         String redirect = "/LoanLogin";
         switch(role) {
           case "Manager":
-          redirect = "/manager-view";
+          redirect = "/managerDash";
           break;
           case "Customer":
           redirect = "/customerDashboard";
           break;
           case "Underwriter":
-          redirect = "/underwriterDashboard";
+          redirect = "/underwriterDash";
           break;
-          case "ReviewersView":
-          redirect = "/ReviewersView";
+          case "Reviewer":
+          redirect = "/reviewerDashboard";
           break;
         }
         response.sendRedirect(redirect);		

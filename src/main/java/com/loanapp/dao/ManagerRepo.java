@@ -1,4 +1,4 @@
-package com.loanapp.Dao;
+package com.loanapp.dao;
 
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -36,7 +36,7 @@ public class ManagerRepo
 	 */
 	public List<LoanData> getLoans()
 	{
-		String sqlQuery = "select loan_app_loans.loan_id, loan_app_loan_types.loan_type, loan_status, review_status, customer_id \n" + 
+		String sqlQuery = "select loan_app_loans.loan_id, loan_app_loan_types.loan_type, loan_status, email_status, customer_id \n" + 
 				"from loan_app_loan_types\n" + 
 				"inner join loan_app_loans\n" + 
 				"on loan_app_loan_types.loan_id = loan_app_loans.loan_type;";
@@ -45,7 +45,7 @@ public class ManagerRepo
 			@Override  
 		    public LoanData mapRow(ResultSet rs, int rownumber) throws SQLException {  
 		        LoanData data = new LoanData(rs.getInt("loan_id"), rs.getString("loan_type"), 
-		        		rs.getString("loan_status"), rs.getString("review_status"));  
+		        		rs.getString("loan_status"), rs.getString("email_status"));  
 		        
 		        data.setAssignedTo(getUserById(rs.getInt("customer_id")));
 		        

@@ -19,18 +19,18 @@ public class Authorize {
 	private static final String DB_URL = DBProperties.getUrl();
 	private final static String DB_USER = DBProperties.getUsername();
 	private static final String DB_PASS = DBProperties.getPassword();
-	private static final String DB_TABLE = DBProperties.getTableName();
+//	private static final String DB_TABLE = DBProperties.getTableName();
 
 	public static String authorize(LoginBean bean) {
 		String role = "undetermined";
 		try {
 			Class.forName(DB_DRIVER);
 			Connection con = DriverManager.getConnection(DB_URL, DB_USER, DB_PASS);
-			PreparedStatement ps = con.prepareStatement("select * from " + DB_TABLE + " where username=?");
+			PreparedStatement ps = con.prepareStatement("select * from loan_app_users where user_login=?");
 			ps.setString(1, bean.getUsername());
 			ResultSet rs = ps.executeQuery();
 			rs.next();
-			role = rs.getString("role");
+			role = rs.getString("user_role");
 			rs.close();
 		} catch (ClassNotFoundException e) {
 			e.printStackTrace();

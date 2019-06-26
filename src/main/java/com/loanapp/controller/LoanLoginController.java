@@ -42,6 +42,10 @@ public class LoanLoginController {
 			       response.sendRedirect("/");
 			}
 			else {
+				
+			// Ryan added this line, allows identification of the user in the dashboard controllers
+			request.getSession().setAttribute("username", username);
+				
         //Everything after this point Jassandip Wrote. 
         //I couldnt test it out because I couldnt get the springapp to run when I last pulled.  
         String role = Authorize.authorize(bean);

@@ -44,7 +44,7 @@ public class LoanTypeReportController extends HttpServlet {
 		String endDate = req.getParameter("EndYear") + "-" + req.getParameter("EndMonth") + "-" + 
 				req.getParameter("EndDay");
 		
-		String loanType = req.getParameter("SelectLoan");		
+		String loanType = req.getParameter("LoanType");		
 		
 		String loanQuery = "(Select loan_id From loan_app_loan_types where loan_type = '" + loanType + "')";
 		
@@ -68,12 +68,22 @@ public class LoanTypeReportController extends HttpServlet {
             out.println("<html>");
             out.println("<head>");
             out.println("<title>ReportController</title>");            
-            out.println("</head>");
+            out.println("<head>" + loanType + " Report </head>");
             out.println("<body>");
+            out.println("<p>Loan Id | Customer Id | Amount | Start Date | Loan Duration | Interest Rate | Loan Status | Review Status | Down Payment</p>");
             while(!loans.isEmpty()) {
             	Loan l = loans.get(0);
             	loans.remove(0);
-            	out.println("<p>" +l.toString() + "</p>");
+            	String loanRow = "<p>" +l.getLoanID() + " | "+ l.getCustomerID() + " | " + l.getAmount() + " | " +
+            			l.getStartDate() + " | " + l.getLoanDuration() + " | " + l.getInterestRate() + " | ";
+            	if(l.getLoanStatus().equals("")) {
+            		loanRow += "pending | ";
+            	}
+            	else {
+            		loanRow += l.getLoanStatus()  + " | ";
+            	}
+            	loanRow +=  l.getDownPayment()  +"</p>";
+            	out.println(loanRow);
             }
             out.println("</body>");
             out.println("</html>");

@@ -11,26 +11,26 @@
     <p> Generate Loan Report</p>
     <p>
         Type of Loan
-        <select id="SelectLoan" name="D1">
-            <option>Mortgage</option>
-            <option>Personal</option>
-            <option>Auto</option>
-            <option>Business</option>
+        <select id="LoanType" name="LoanType">
+            <option value="Mortgage">Mortgage</option>
+            <option value="Personal">Personal</option>
+            <option value="Auto">Auto</option>
+            <option value="Business">Business</option>
         </select>
     </p>
     <p>
         Start Date:&nbsp;&nbsp; Month&nbsp;
-        <input id="StartMonth" class="auto-style1" type="text" />&nbsp;&nbsp; Day
-        <input id="StartDay" class="auto-style1" type="text" />&nbsp;&nbsp; Year
-        <input id="StartYear" class="auto-style1" type="text" />
+        <input id="StartMonth" class="auto-style1" type="text" name="StartMonth"/>&nbsp;&nbsp; Day
+        <input id="StartDay" class="auto-style1" type="text" name="StartDay"/>&nbsp;&nbsp; Year
+        <input id="StartYear" class="auto-style1" type="text" name="StartYear"/>
     </p>
     <p>
         &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; To&nbsp;
     </p>
     <p>
-        End Date:&nbsp;&nbsp;&nbsp; Month&nbsp; <input id="EndMonth" class="auto-style1" type="text" />&nbsp;&nbsp; Day
-        <input id="EndDay" class="auto-style1" type="text" />&nbsp;&nbsp; Year
-        <input id="EndYear" class="auto-style1" type="text" />&nbsp;&nbsp; 
+        End Date:&nbsp;&nbsp;&nbsp; Month&nbsp; <input id="EndMonth" class="auto-style1" type="text" name="EndMonth"/>&nbsp;&nbsp; Day
+        <input id="EndDay" class="auto-style1" type="text" name="EndDay"/>&nbsp;&nbsp; Year
+        <input id="EndYear" class="auto-style1" type="text" name="EndYear"/>&nbsp;&nbsp; 
     </p>
     <p>
         <input id="Button1" type="submit" value="Make Report" />

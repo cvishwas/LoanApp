@@ -50,6 +50,9 @@ LoginServices loginServciesImpl;
 			       response.sendRedirect("/");
 			}
 			else {
+				
+				// Ryan added this line, add username to session so it is available to use in dashboards
+				request.getSession().setAttribute("username", username);
         //Everything after this point Jassandip Wrote. 
         //I couldnt test it out because I couldnt get the springapp to run when I last pulled.  
         String role = loginServciesImpl.authorize(bean);

@@ -64,6 +64,6 @@
 </c:forEach>
 </table>
 <br>
-<a href="/">Log Out</a>
+<a href="/Loans/">Log Out</a>
 </body>
 </html>

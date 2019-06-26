@@ -23,7 +23,7 @@ public class EmailService {
 	}
 	public int updateEmail()
 	{
-		String query = "update loan_app_loans set email_status=1 where loan_id = " + this.getLoanID();
+		String query = "update loan_app_loans set email_status=y where loan_id = " + this.getLoanID();
 		return jdbcTemplate.update(query);
 	}
 

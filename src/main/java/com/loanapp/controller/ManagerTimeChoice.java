@@ -10,7 +10,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 
 import com.loanapp.services.TimeChoiceServices;
-
+//Controllers
 @Controller
 public class ManagerTimeChoice {
 	

@@ -70,21 +70,35 @@ public class LoanTypeReportController extends HttpServlet {
             out.println("<title>ReportController</title>");            
             out.println("<head>" + loanType + " Report </head>");
             out.println("<body>");
-            out.println("<p>Loan Id | Customer Id | Amount | Start Date | Loan Duration | Interest Rate | Loan Status | Review Status | Down Payment</p>");
-            while(!loans.isEmpty()) {
-            	Loan l = loans.get(0);
-            	loans.remove(0);
-            	String loanRow = "<p>" +l.getLoanID() + " | "+ l.getCustomerID() + " | " + l.getAmount() + " | " +
-            			l.getStartDate() + " | " + l.getLoanDuration() + " | " + l.getInterestRate() + " | ";
-            	if(l.getLoanStatus().equals("")) {
-            		loanRow += "pending | ";
+            
+            //Checks if loans starts empty
+            if(loans.isEmpty()) {
+            	if(loanType.contentEquals("Mortgage")) {
+            		out.println("<p>There are no new " + loanType.toLowerCase() + " applications started between " + startDate + " & " + endDate + "</p>");
             	}
             	else {
-            		loanRow += l.getLoanStatus()  + " | ";
+            		out.println("<p>There are no new " + loanType.toLowerCase() + " loan applications started between " + startDate + " & " + endDate + "</p>");
             	}
-            	loanRow +=  l.getDownPayment()  +"</p>";
-            	out.println(loanRow);
             }
+            else {
+	            out.println("<p>Loan Id | Customer Id | Amount | Start Date | Loan Duration | Interest Rate | Loan Status | Review Status | Down Payment</p>");
+	            
+	            //Prints the information of each loan in loans
+	            while(!loans.isEmpty()) {
+	            	Loan l = loans.get(0);
+	            	loans.remove(0);
+	            	String loanRow = "<p>" +l.getLoanID() + " | "+ l.getCustomerID() + " | " + l.getAmount() + " | " +
+	            			l.getStartDate() + " | " + l.getLoanDuration() + " | " + l.getInterestRate() + " | ";
+	            	if(l.getLoanStatus().equals("")) {
+	            		loanRow += "pending | ";
+	            	}
+	            	else {
+	            		loanRow += l.getLoanStatus()  + " | ";
+	            	}
+	            	loanRow +=  l.getDownPayment()  +"</p>";
+	            	out.println(loanRow);
+	            }
+	           }
             out.println("</body>");
             out.println("</html>");
 		} catch (IOException e) {

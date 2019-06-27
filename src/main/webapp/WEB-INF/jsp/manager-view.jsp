@@ -9,6 +9,8 @@
 
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
 <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
 <style>
 	.material-icons{
 	    display: inline-flex;
@@ -39,7 +41,6 @@
     </div>
   </div>
 </nav>
-
 	<div class="container">
 	
 		<div class="mt-5">
@@ -81,7 +82,7 @@
 						<div class="col-md-2 bg-light border">
 							<c:choose> 
 								<c:when test="${not empty edit && edit == item.loanId}">
-									<select name="usersDropDown" class="form-control form-control-sm">
+									<select id="dropDown" name="usersDropDown" class="form-control form-control-sm">
 									
 								      <c:forEach var="userObj" items="${dropDownList}">
 								    	<option value="${userObj.userID}"
@@ -101,7 +102,7 @@
 						<div class="col-md-2">
 							<c:choose> 
 								<c:when test="${not empty edit && edit == item.loanId}">
-									<a href="/managerDash?save=true&loanId=${item.loanId}" class="btn btn-success btn-block">Save</a>
+									<a id="save" href="/managerDash?save=true&loanId=${item.loanId}" class="btn btn-success btn-block">Save</a>
 								</c:when>
 								<c:otherwise>
 									<a href="/managerDash?editId=${item.loanId}" class="btn btn-outline-success btn-block">Edit</a>
@@ -116,4 +117,15 @@
 		</div>
 	</div>
 </body>
+<script>
+	$("#save").click(function(event){
+		event.preventDefault();
+		
+		var userId = $("select#dropDown option:checked" ).val(); 
+		var route = $("#save").attr('href')+ '&userId=' + userId;
+		
+		var redirect = "/managerDash";
+		$.get(route, () => window.location.href = redirect);
+	});
+</script>
 </html>

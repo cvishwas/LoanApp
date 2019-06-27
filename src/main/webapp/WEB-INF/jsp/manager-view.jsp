@@ -32,6 +32,9 @@
 	     <li class="nav-item active">
 	        <a class="btn btn-light" href="/timeChoice">Time Choice</a>
 	    </li>
+	    <li class="nav-item active">
+	        <a class="btn btn-light" href="/loanReport">Loan Report</a>
+	    </li>
         <li class="nav-item active">
         	<a class="nav-link" href="/?sign-out=true">Sign Out</a>
         </li>

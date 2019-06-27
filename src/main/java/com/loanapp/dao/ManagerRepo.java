@@ -12,6 +12,7 @@ import org.springframework.stereotype.Repository;
 import com.loanapp.beans.DBProperties;
 import com.loanapp.beans.LoanData;
 import com.loanapp.beans.User;
+import com.loanapp.services.ManagerServices;
 
 /**
  * Manager Repository class allow to retrieve loans
@@ -21,7 +22,7 @@ import com.loanapp.beans.User;
  */
 
 @Repository
-public class ManagerRepo 
+public class ManagerRepo
 {
 
 	

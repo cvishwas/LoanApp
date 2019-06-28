@@ -31,7 +31,7 @@ if(loans.isEmpty()){
 		<TH>Loan Status</TH>
 	</TR>
 <%String status;
-for(Loan l : loans){
+for(Loan l : loans) {
 	if(l.getLoanStatus().equals("")){
 		status = "pending";
 	}

@@ -59,7 +59,7 @@ public class LoanTypeReportController extends HttpServlet {
 		//Runs the query and gets the results
 		List<Loan> loans = accesser.queryLoans(sqlStatement);
 		
-		//Keeps information on database query
+		//Keeps information on database query in the session
         HttpSession session = req.getSession();
         session.setAttribute("LoanList",loans);
         session.setAttribute("loanType", loanType);

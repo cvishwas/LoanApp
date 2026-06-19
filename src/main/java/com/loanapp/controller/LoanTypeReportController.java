@@ -35,7 +35,7 @@ public class LoanTypeReportController extends HttpServlet {
 	
 	@RequestMapping(value = "/showReport")
 	//Makes the loan report
-	public void makeReport(HttpServletRequest req, HttpServletResponse response) {
+	public String makeReport(HttpServletRequest req, HttpServletResponse response) {
 		
 		//Gets the loan type, start date and end date from LoanTypeReport.jsp
 		String startDate = req.getParameter("StartYear") + "-" + req.getParameter("StartMonth") + "-" + 
@@ -59,51 +59,13 @@ public class LoanTypeReportController extends HttpServlet {
 		//Runs the query and gets the results
 		List<Loan> loans = accesser.queryLoans(sqlStatement);
 		
-		//Keeps information on database query
+		//Keeps information on database query in the session
         HttpSession session = req.getSession();
-        session.setAttribute("Query",loans);
-		
-		try (PrintWriter out = response.getWriter()) {
-			out.println("<!DOCTYPE html>");
-            out.println("<html>");
-            out.println("<head>");
-            out.println("<title>ReportController</title>");            
-            out.println("<head>" + loanType + " Report </head>");
-            out.println("<body>");
-            
-            //Checks if loans starts empty
-            if(loans.isEmpty()) {
-            	if(loanType.contentEquals("Mortgage")) {
-            		out.println("<p>There are no new " + loanType.toLowerCase() + " applications started between " + startDate + " & " + endDate + "</p>");
-            	}
-            	else {
-            		out.println("<p>There are no new " + loanType.toLowerCase() + " loan applications started between " + startDate + " & " + endDate + "</p>");
-            	}
-            }
-            else {
-	            out.println("<p>Loan Id | Customer Id | Amount | Start Date | Loan Duration | Interest Rate | Loan Status | Review Status | Down Payment</p>");
-	            
-	            //Prints the information of each loan in loans
-	            while(!loans.isEmpty()) {
-	            	Loan l = loans.get(0);
-	            	loans.remove(0);
-	            	String loanRow = "<p>" +l.getLoanID() + " | "+ l.getCustomerID() + " | " + l.getAmount() + " | " +
-	            			l.getStartDate() + " | " + l.getLoanDuration() + " | " + l.getInterestRate() + " | ";
-	            	if(l.getLoanStatus().equals("")) {
-	            		loanRow += "pending | ";
-	            	}
-	            	else {
-	            		loanRow += l.getLoanStatus()  + " | ";
-	            	}
-	            	loanRow +=  l.getDownPayment()  +"</p>";
-	            	out.println(loanRow);
-	            }
-	           }
-            out.println("</body>");
-            out.println("</html>");
-		} catch (IOException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
+        session.setAttribute("LoanList",loans);
+        session.setAttribute("loanType", loanType);
+        session.setAttribute("startDate", startDate);
+        session.setAttribute("endDate", endDate);
+
+		return "Report"	;
 	}
 }
